@@ -6,7 +6,9 @@
     <body>
       <?php
       include 'Donnees.inc.php';
-  
+      include 'table.php';
+     
+  /*
       for ($i=0; $i <count($Recettes) ; $i++) { 
         print_r($Recettes[$i]['titre']);
         echo '<br/>';
@@ -19,10 +21,19 @@
           print_r($Recettes[$i]['index'][$j]);
           echo '<br/>';
        
-      } 
+      } */
+      
+ session_start();
+ if($_SESSION['id'] !== ""){
+ $user = $_SESSION['motDePasse'];
+ // afficher un message
+ echo "Bonjour $user, vous êtes connecté";
+ }
+ 
+ 
         
        
-    }
+    
       ?>
     </body>
 </html>
