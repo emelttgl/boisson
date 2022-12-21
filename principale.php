@@ -20,11 +20,9 @@
 
  }
 
-                
+ 
 
-
- /*
-      for ($i=0; $i <count($Recettes) ; $i++) { 
+     for ($i=0; $i <count($Recettes) ; $i++) { 
         print_r($Recettes[$i]['titre']);
         echo '<br/>';
         print_r($Recettes[$i]['ingredients']);
@@ -36,7 +34,8 @@
           print_r($Recettes[$i]['index'][$j]);
           echo '<br/>';
        
-      } */
+      } 
+    }
  ?>
  
  </div>
