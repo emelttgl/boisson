@@ -8,26 +8,27 @@
     <div id="container">
       <!-- zone de connexion -->
  <!-- manque le bouton d'inscription -->
-      <form action="" method="POST">
-        <h1>Inscription</h1>
+ <form action="verification.php" method="POST">
+        <fieldset>
+        <legend>Inscription</legend>
  
-        <label><b>Nom</b></label>
+        <label>Nom</label>
         <input type="text" placeholder="Nom" name="nom" required>
         <br>
-        <label><b>Prénom</b></label>
+        <label>Prénom</label>
         <input type="text" placeholder="Prénom" name="prenom" required>
         <br>
-        <label><b>Mail</b></label>
-        <input type="text" placeholder="Mail" name="mail" required>
+        <label>Email</label>
+        <input type="text" placeholder="Nom" name="nom" required>
         <br>
-        <label><b>Nom d'utilisateur</b></label>
+        <label>Nom d'utilisateur</label>
         <input type="text" placeholder="Entrer le nom d'utilisateur" name="id" required>
         <br>
-        <label><b>Mot de passe</b></label>
+        <label>Mot de passe</label>
         <input type="password" placeholder="Entrer le mot de passe" name="motDePasse" required>
         <br>
-        <input type="submit" name='inscription' value='INSCRIPTION' >
-
+        <input type="submit" id='submit' value='VALIDER' >
+        </fieldset>
         </form>
    </div>
  </body>
