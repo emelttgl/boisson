@@ -8,10 +8,9 @@ if(isset($_POST['id']) && isset($_POST['motDePasse'])){
     $db_host = 'localhost';
     $db = mysqli_connect($db_host, $db_username, $db_password,$db_name) or die('could not connect to database');
     
-    $base="boisson";
     $Sql="
-        CREATE  IF NOT EXISTS DATABASE $base;
-        USE $base;
+        CREATE  IF NOT EXISTS DATABASE $db_name;
+        USE $db_name;
 
         CREATE TABLE Aliment (nomAliment VARCHAR(400)  PRIMARY KEY ,preparationAliment VARCHAR(400)  NOT NULL ,type VARCHAR(400)  NOT NULL );
 
