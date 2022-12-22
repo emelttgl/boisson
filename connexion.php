@@ -9,7 +9,9 @@
       <!-- zone de connexion -->
  
       <form action="verification.php" method="POST">
-        <h1>Connexion</h1>
+      <fieldset>
+        <legend>Connexion</legend>
+      
  
         <label><b>Nom d'utilisateur</b></label>
         <input type="text" placeholder="Entrer le nom d'utilisateur" name="id" required>
@@ -25,6 +27,7 @@
                 echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
           }
         ?>
+        </fieldset>
       </form>
    </div>
  </body>
