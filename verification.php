@@ -14,11 +14,11 @@ if(isset($_POST['id']) && isset($_POST['motDePasse'])){
 
         CREATE TABLE Aliment (nomAliment VARCHAR(400)  PRIMARY KEY ,preparationAliment VARCHAR(400)  NOT NULL ,type VARCHAR(400)  NOT NULL );
 
-        CREATE TABLE  Preparation ( preparationAliment VARCHAR(400)  PRIMARY KEY );
+        CREATE TABLE Preparation (preparationAliment VARCHAR(400)  PRIMARY KEY );
 
         CREATE TABLE Type (typeNom VARCHAR(400) PRIMARY KEY );
 
-        CREATE TABLE Recettes (NomCocktail VARCHAR(400)  PRIMARY KEY ,preparation VARCHAR(400)  NOT NULL ,ingredient VARCHAR(400)  NOT NULL );
+        CREATE TABLE Recettes (NomCocktail VARCHAR(400)  PRIMARY KEY ,preparation VARCHAR(400)  NOT NULL ,ingredient VARCHAR(4000)  NOT NULL );
 
         CREATE TABLE Utilisateur (id VARCHAR(400)  PRIMARY KEY , nom VARCHAR(400)  NOT NULL ,prenom VARCHAR(400)  NOT NULL ,mail VARCHAR(400)  NOT NULL ,motDePasse VARCHAR(400) NOT NULL );
 
@@ -37,8 +37,7 @@ if(isset($_POST['id']) && isset($_POST['motDePasse'])){
     $motDePasse = mysqli_real_escape_string($db,htmlspecialchars($_POST['motDePasse']));
     
     if($id !== "" && $motDePasse !== "") {
-        $requete = "SELECT count(*) FROM utilisateur where 
-        id = '".$id."' and motDePasse = '".$motDePasse."' ";
+        $requete = "SELECT count(*) FROM utilisateur where  id = '".$id."' and motDePasse = '".$motDePasse."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse = mysqli_fetch_array($exec_requete);
         $count = $reponse['count(*)'];
