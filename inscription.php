@@ -29,11 +29,12 @@
    </div>
  </body>
             <?php
-              
+              session_start();
               if(isset($_POST['Valider'])){
                 
                 try
                 {
+                  
                   $nom=$_POST['nom']; 
                   $prenom=$_POST['prenom']; 
                   $mail=$_POST['mail']; 
@@ -42,9 +43,10 @@
                   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                   $req = $bdd->query("INSERT INTO `Utilisateur`(`nom`, `prenom`, `mail`, `motDePasse`) VALUES ('$nom', '$prenom', '$mail', '$motDePasse');");
-                  $recupId = $bdd->query("SELECT COUNT(*) as Nb FROM UTILISATEUR ;");
+                  $recupId = $bdd->query("SELECT id FROM UTILISATEUR WHERE nom = '$nom' and motDePasse = '$motDePasse' ;");
                   $result= $recupId->fetch();
-                  $count = $result['Nb'];
+                  $count = $result['id'];
+                  $_SESSION['id']= $count;
                   echo 'ID :' . $count;
                   header('Location: connexion.php');
                 }

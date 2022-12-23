@@ -10,20 +10,17 @@
     <div id="content">
   
       <!-- Bouton -->
-      <a href="connexion.php"><button>Connexion</button></a>
+      <a href="verification.php"><button>Créer la database</button></a>
       <br>
+      <a href="connexion.php"><button>Connexion</button></a>
+     
       <a href="inscription.php"><button>Inscription</button></a>
-        <?php
+     
+      <?php
           include "Donnees.inc.php";
-        session_start();
+          session_start();
  
         // afficher un message lors de la connexion
- 
-        if(isset($_SESSION['id'])){
-          echo "Bonjour " .$_SESSION['id'];
-          echo  " , vous êtes connecté !";
-          echo '<br/>';
-        }
         
         try{
 
@@ -32,44 +29,52 @@
           $db_name = 'boisson';
           $db_host = 'localhost';
           $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
-            /*for ($i=0; $i <count($Recettes) ; $i++) {
-                
-            
-              $db_username = 'root';
-              $db_password = 'root';
-              $db_name = 'boisson';
-              $db_host = 'localhost';
-                  
+          
 
-              if($count==0) {
-                //Recettes (NomCocktail VARCHAR(400)  PRIMARY KEY ,preparation VARCHAR(400)  NOT NULL ,ingredient VARCHAR(400)  NOT NULL );
-                $req = $bdd->prepare('INSERT INTO Recettes (NomCocktail, preparation, ingredient) VALUES(?, ?, ?)');
-                $req->execute(array($Recettes[$i]['titre'], $Recettes[$i]['preparation'], $Recettes[$i]['ingredients']));
-                for ($j=0; $j <count($Recettes[$i]['index']) ; $j++) { 
-                  echo "$Recettes[$i]['index'][$j]";
-                    
-                  $req = $bdd->prepare('INSERT INTO `Liaison`(`numAliment`, `nomAliment`) VALUES (?,?)');
-                  $req->execute(array($Recettes[$i][index], $Recettes[$i]['preparation'], $Recettes[$i]['ingredients']));
-                          }
-                        
-                  
-                        }*/
-
-          for ($i=0; $i <count($Recettes) ; $i++) {
-            $titre=$Recettes[$i]["titre"];
-            $titre = preg_replace('/[^A-Za-z0-9\-]/', ' ', $titre); //fonction qui enleve les caracteres spéciaux
-            echo "</br>";
-            $ingredient=$Recettes[$i]["ingredients"];
-            $ingredient = preg_replace('/[^A-Za-z0-9\-]/', ' ', $ingredient); //fonction qui enleve les caracteres spéciaux
-            echo "</br>";
-            $preparation=$Recettes[$i]["preparation"];
-            $preparation=preg_replace('/[^A-Za-z0-9\-]/', ' ', $preparation); //fonction qui enleve les caracteres spéciaux
-            echo "</br>";
-
-            $req = $bdd->query("INSERT INTO `Recettes`(`NomCocktail`, `preparation`, `ingredient`) VALUES('$titre' , '$preparation', '$ingredient');");
-
+          if(isset($_SESSION['id'])){
+            $id = $_SESSION['id'];
+            $recupId = $bdd->query("SELECT prenom FROM UTILISATEUR WHERE id='$id' ;");
+            $result= $recupId->fetch();
+            $count = $result['prenom'];
+            echo "</br> Bonjour $count, vous êtes connecté !<br/>";
           }
-        //AJOUT DES DONNEES DE LA TABLES HIERARCHIE DANS ALIMENT
+
+          $req = $bdd->query("SELECT count(*) as Nb FROM Recettes;");
+          $result= $req->fetch();
+          $count = $result['Nb'];
+
+          $req1 = $bdd->query("SELECT count(*) as Nb FROM Liaison;");
+          $result1= $req1->fetch();
+          $count1 = $result1['Nb'];
+
+          //AJOUT DES DONNEES DE LA TABLE RECETTES DANS RECETTES
+          if($count == 0 && $count1 == 0){
+            for ($i=0; $i <count($Recettes) ; $i++) {
+              $titre=$Recettes[$i]["titre"];
+              $titre = preg_replace('/[^A-Za-z0-9\-]/', ' ', $titre); //fonction qui enleve les caracteres spéciaux
+              //echo "</br>";
+              $ingredient=$Recettes[$i]["ingredients"];
+              $ingredient = preg_replace('/[^A-Za-z0-9\-]/', ' ', $ingredient); //fonction qui enleve les caracteres spéciaux
+              //echo "</br>";
+              $preparation=$Recettes[$i]["preparation"];
+              $preparation=preg_replace('/[^A-Za-z0-9\-]/', ' ', $preparation); //fonction qui enleve les caracteres spéciaux
+              //echo "</br>";
+            
+              //AJOUT DES DONNEES DE LA TABLE INDEX DANS LIAISON
+              for ($j=0; $j <count($Recettes[$i]["index"]) ; $j++) {
+                $index=preg_replace('/[^A-Za-z0-9\-]/', ' ', $Recettes[$i]["index"][$j]);
+                //echo "</br>";
+                $req = $bdd->query("INSERT INTO `Liaison`(`nomAliment`) VALUES('$index');");
+              }
+              $req = $bdd->query("INSERT INTO `Recettes`(`NomCocktail`, `preparation`, `ingredient`) VALUES('$titre' , '$preparation', '$ingredient');");
+            
+            }
+          } 
+          //AJOUT DES DONNEES DE LA TABLE HIERARCHIE DANS ALIMENT
+          $req = $bdd->query("SELECT count(*) as Nb FROM Aliment;");
+          $result= $req->fetch();
+          $count = $result['Nb'];
+          if($count == 0){
             foreach($Hierarchie as $cle => $elem){
               
               if(isset($cle)){
@@ -90,71 +95,25 @@
                         $val2 = preg_replace('/[^A-Za-z0-9\-]/', ' ', $val2);
                         //echo $val2;
                         $req = $bdd->query("INSERT INTO `Aliment`(`famille`, `nomAliment`, `categorie`) VALUES('$cle' , '$val2', '$categ');");
-                    
                       }
                     }
                   }
                 }
               }
-
-            } 
-                
+            }
+          }           
         }
-            
+       
         catch(Exception $e){
-                      // Message d'erreur
-                      die($e->getMessage());
-                  }
-                /*  for ($i=0; $i <count($Hierarchie) ; $i++) { 
-                    echo $Hierarchie[$i].;
-                    echo '<br/>';
-                  // print_r($Recettes[$i]['sous-categorie']);
-                    echo '<br/>';
-                    //print_r($Recettes[$i]['super-categorie']);
-                    echo '<br/>';
-
-                    $db_username = 'root';
-                    $db_password = 'root';
-                    $db_name = 'boisson';
-                    $db_host = 'localhost';
-                    $db = mysqli_connect($db_host, $db_username, $db_password,$db_name) or die('could not connect to database');
-                  
-                        $requete = "SELECT count(*) FROM recettes";
-                        $exec_requete = mysqli_query($db,$requete);
-                        $reponse = mysqli_fetch_array($exec_requete);
-                        $count = $reponse['count(*)']; 
-                        if($count==0) {
-                    //Recettes (NomCocktail VARCHAR(400)  PRIMARY KEY ,preparation VARCHAR(400)  NOT NULL ,ingredient VARCHAR(400)  NOT NULL );
-                          $req = $bdd->prepare('INSERT INTO Recettes (NomCocktail, preparation, ingredient) VALUES(?, ?, ?)');
-                          $req->execute(array($Recettes[$i]['titre'], $Recettes[$i]['preparation'], $Recettes[$i]['ingredients']));
-                    
-                          for ($j=0; $j <count($Recettes[$i]['index']) ; $j++) { 
-                    
-                            $req = $bdd->prepare('INSERT INTO Recettes (NomCocktail, preparation, ingredient) VALUES(?, ?, ?)');
-                            $req->execute(array($Recettes[$i]['titre'], $Recettes[$i]['preparation'], $Recettes[$i]['ingredients']));
-                    
-                          }
-                        }
-                  }
-        */
-
-
-              /*
-              $Hierarchie=array (
-                'Épice' => 
-                array (
-                  'sous-categorie' => 
-                  array (
-                    6 => 'Épice commune',
-                    7 => 'Épice européenne',
-                    16 => 'Vanille',
-                  ),
-                  'super-categorie' => 
-                  array (
-                    0 => 'Assaisonnement',
-                  ),
-                ),*/
-
+           // Message d'erreur
+          if(("SQLSTATE[42S02]: Base table or view not found: 1146 Table 'boisson.recettes' doesn't exist" == $e->getMessage()) || ("SQLSTATE[HY000] [1049] Unknown database 'boisson'" == $e->getMessage())){
+            echo "<p style='color:pink'>CREER LA DATABASE</p>";
+          }
+          else{
+            die($e->getMessage());
+          }
+            
+        }
       ?>
     </div>
   </body>

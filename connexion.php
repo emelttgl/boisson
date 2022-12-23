@@ -25,7 +25,7 @@
 
           session_start();
           $id=$_SESSION['id']; 
-          //echo $id;
+          echo "</br> VOICI VOTRE ID : $id";
             if(isset($_POST['connexion'])){
               try{
                 $id=$_POST['id'];  
