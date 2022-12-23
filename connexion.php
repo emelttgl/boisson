@@ -8,8 +8,11 @@
     <div id="container">
       <!-- zone de connexion -->
  
-      <form action="" method="POST">
-        <h1>Connexion</h1>
+      <form action="verification.php" method="POST">
+      <fieldset>
+        <legend>Connexion</legend>
+      
+
  
         <label><b>Nom d'utilisateur</b></label>
         <input type="text" placeholder="Entrer le nom d'utilisateur" name="id" required>
@@ -49,6 +52,7 @@
             }
         
         ?>
+        </fieldset>
       </form>
    </div>
  </body>
