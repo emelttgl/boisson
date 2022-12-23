@@ -8,7 +8,7 @@
     <div id="container">
       <!-- zone de connexion -->
  
-      <form action="verification.php" method="POST">
+      <form action="" method="POST">
       <fieldset>
         <legend>Connexion</legend>
       
@@ -24,6 +24,8 @@
         <?php
 
           session_start();
+          $id=$_SESSION['id']; 
+          //echo $id;
             if(isset($_POST['connexion'])){
               try{
                 $id=$_POST['id'];  
@@ -32,7 +34,6 @@
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 $req = $bdd->query("SELECT COUNT(*) as Nb FROM UTILISATEUR WHERE id = '$id' AND motDePasse = '$motDePasse' ;");
-                $req->execute();
                 $result= $req->fetch();
                 $count = $result['Nb'];
                 if($count!=0){ // nom d'utilisateur et mot de passe correctes

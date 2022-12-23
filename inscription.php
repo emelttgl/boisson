@@ -9,7 +9,7 @@
  <form action="" method="POST">
         <fieldset>
         <legend>Inscription</legend>
- 
+        <p style='color:pink'> ID SE CREER AUTOMATIQUEMENT après le clique sur valider</p>
         <label>Nom</label>
         <input type="text" placeholder="Nom" name="nom">
         <br>
@@ -18,9 +18,6 @@
         <br>
         <label>Mail</label>
         <input type="text" placeholder="Mail" name="mail">
-        <br>
-        <label>Nom d'utilisateur</label>
-        <input type="text" placeholder="Entrer le nom d'utilisateur" name="id" required>
         <br>
         <label>Mot de passe</label>
         <input type="password" placeholder="Entrer le mot de passe" name="motDePasse" required>
@@ -37,7 +34,6 @@
                 
                 try
                 {
-                  $id=$_POST['id']; 
                   $nom=$_POST['nom']; 
                   $prenom=$_POST['prenom']; 
                   $mail=$_POST['mail']; 
@@ -46,7 +42,10 @@
                   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                   $req = $bdd->query("INSERT INTO `Utilisateur`(`nom`, `prenom`, `mail`, `motDePasse`) VALUES ('$nom', '$prenom', '$mail', '$motDePasse');");
-                  $req->execute();
+                  $recupId = $bdd->query("SELECT COUNT(*) as Nb FROM UTILISATEUR ;");
+                  $result= $recupId->fetch();
+                  $count = $result['Nb'];
+                  echo 'ID :' . $count;
                   header('Location: connexion.php');
                 }
                 catch(Exception $e)
@@ -55,6 +54,7 @@
                   die('nom d utilisateur est une cle primaire');
                 }
               }
+
         ?>
         
 </html>
