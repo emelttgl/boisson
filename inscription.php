@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+      <link rel="icon" type="image/jpg" href="image/logo.png"/>
   </head>
   <body>
     <div id="container">

@@ -4,6 +4,7 @@
  
       <!-- feuille de style -->
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+      <link rel="icon" type="image/jpg" href="image/logo.png"/>
   </head>
 
   <body style='background:#fff;'>
