@@ -10,7 +10,7 @@
     <div id="content">
   
       <!-- Bouton -->
-      <a href="verification.php"><button>Créer la database</button></a>
+      <a href="verification.php"> <button name ="db">Créer la database</button></a>
       <br>
       <a href="connexion.php"><button>Connexion</button></a>
      
@@ -30,15 +30,22 @@
           $db_host = 'localhost';
           $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
           
-
           if(isset($_SESSION['id'])){
             $id = $_SESSION['id'];
-            $recupId = $bdd->query("SELECT prenom FROM UTILISATEUR WHERE id='$id' ;");
-            $result= $recupId->fetch();
-            $count = $result['prenom'];
-            echo "</br> Bonjour $count, vous êtes connecté !<br/>";
-          }
+            // verifier si utilisateur est non vide
+            $verif = $bdd->query("SELECT COUNT(*) as Nb FROM UTILISATEUR ;");
+            $result= $verif->fetch();
+            $count = $result['Nb'];
+            if($count != 0){
 
+              $recupId = $bdd->query("SELECT prenom FROM UTILISATEUR WHERE id='$id' ;");
+              $result= $recupId->fetch();
+              $count = $result['prenom'];
+            
+              echo "</br> Bonjour $count, vous êtes connecté !<br/>";
+              
+            }
+          }
           $req = $bdd->query("SELECT count(*) as Nb FROM Recettes;");
           $result= $req->fetch();
           $count = $result['Nb'];
