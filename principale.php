@@ -2,8 +2,8 @@
   <head>
     <meta charset="utf-8">
  
-      <!-- feuille de style -->
-      <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+      <!-- feuille de style a remettre, le texte est blanc sinon impossible de lire l'erreur-->
+      <link rel="stylesheet" href="" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
   </head>
 
@@ -20,7 +20,9 @@
       <?php
           include "Donnees.inc.php";
           session_start();
- 
+          $caraS = array('\\', "'");
+          $caraN = array('', " ");
+       
         // afficher un message lors de la connexion
         
         try{
@@ -59,18 +61,18 @@
           if($count == 0 && $count1 == 0){
             for ($i=0; $i <count($Recettes) ; $i++) {
               $titre=$Recettes[$i]["titre"];
-              $titre = preg_replace('/[^A-Za-z0-9\-]/', ' ', $titre); //fonction qui enleve les caracteres spéciaux
+              $titre = str_replace($caraS, $caraN, $titre); //fonction qui enleve les caracteres spéciaux
               //echo "</br>";
               $ingredient=$Recettes[$i]["ingredients"];
-              $ingredient = preg_replace('/[^A-Za-z0-9\-]/', ' ', $ingredient); //fonction qui enleve les caracteres spéciaux
+              $ingredient = str_replace($caraS, $caraN, $ingredient); //fonction qui enleve les caracteres spéciaux
               //echo "</br>";
               $preparation=$Recettes[$i]["preparation"];
-              $preparation=preg_replace('/[^A-Za-z0-9\-]/', ' ', $preparation); //fonction qui enleve les caracteres spéciaux
+              $preparation = str_replace($caraS, $caraN, $preparation); //fonction qui enleve les caracteres spéciaux
               //echo "</br>";
             
               //AJOUT DES DONNEES DE LA TABLE INDEX DANS LIAISON
               for ($j=0; $j <count($Recettes[$i]["index"]) ; $j++) {
-                $index=preg_replace('/[^A-Za-z0-9\-]/', ' ', $Recettes[$i]["index"][$j]);
+                $index = str_replace($caraS, $caraN, $Recettes[$i]["index"][$j]);
                 //echo "</br>";
                 $req = $bdd->query("INSERT INTO `Liaison`(`nomAliment`) VALUES('$index');");
               }
@@ -86,21 +88,21 @@
             foreach($Hierarchie as $cle => $elem){
               
               if(isset($cle)){
-                $cle = preg_replace('/[^A-Za-z0-9\-]/', ' ', $cle); //fonction qui enleve les caracteres spéciaux
+                $cle = str_replace($caraS, $caraN, $cle); //fonction qui enleve les caracteres spéciaux
                 //echo "$cle <br />"; 
                 foreach($elem as $categ=> $fruit){ 
                   
                   if(isset($categ)){
                     
-                    $categ = preg_replace('/[^A-Za-z0-9\-]/', ' ', $categ);
+                    $categ = str_replace($caraS, $caraN, $categ);
                     //echo "$categ <br />";
                     foreach($fruit as $val1=> $val2){
                       
                       if(isset($val2)&& isset($val1)){ 
                         
-                        $val1 = preg_replace('/[^A-Za-z0-9\-]/', ' ', $val1);
+                        $val1 = str_replace($caraS, $caraN, $val1);
                         //echo "$val1 <br />";
-                        $val2 = preg_replace('/[^A-Za-z0-9\-]/', ' ', $val2);
+                        $val2 = str_replace($caraS, $caraN, $val2);
                         //echo $val2;
                         $req = $bdd->query("INSERT INTO `Aliment`(`famille`, `nomAliment`, `categorie`) VALUES('$cle' , '$val2', '$categ');");
                       }
