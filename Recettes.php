@@ -54,77 +54,62 @@ if(isset($_POST['aliment']))
         <?php if(strtolower($rowf['NomCocktail'])=="black velvet"){
             echo '<img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
         }
-            ?>
-         <?php if(strtolower($rowf['NomCocktail'])=="bloody mary"){
+           else if(strtolower($rowf['NomCocktail'])=="bloody mary"){
             echo '</br><img id="bloodymary" src="Photos/Bloody_mary.jpg" border="0" /> ';
         }
-            ?> 
-           <?php if(strtolower($rowf['NomCocktail'])=="bora bora"){
+            else if(strtolower($rowf['NomCocktail'])=="bora bora"){
             echo '</br><img id="borabora" src="Photos/Bora_bora.jpg" border="0" /> ';
         }
-            ?>    
-           <?php if(strtolower($rowf['NomCocktail'])=="builder"){
+            else if(strtolower($rowf['NomCocktail'])=="builder"){
             echo '</br><img id="builder" src="Photos/Builder.jpg" border="0" /> ';
         }
-            ?>
-             <?php if(strtolower($rowf['NomCocktail'])=="caïpirinha"){
+            else if(strtolower($rowf['NomCocktail'])=="caïpirinha"){
             echo '</br><img id="caipirinha" src="Photos/Caipirinha.jpg" border="0" /> ';
         }
-            ?> 
-            <?php if(strtolower($rowf['NomCocktail'])=="coconut kiss"){
+            else if(strtolower($rowf['NomCocktail'])=="coconut kiss"){
             echo '</br><img id="cocokiss" src="Photos/Coconut_kiss.jpg" border="0" /> ';
         }
-            ?> 
-            <?php if(strtolower($rowf['NomCocktail'])=="cuba libre"){
+            else if(strtolower($rowf['NomCocktail'])=="cuba libre"){
             echo '</br><img id="cubalibre" src="Photos/Cuba_libre.jpg" border="0" /> ';
         }
-            ?> 
-             <?php if(strtolower($rowf['NomCocktail'])=="frosty lime"){
+            else if(strtolower($rowf['NomCocktail'])=="frosty lime"){
             echo '</br><img id="frostylime" src="Photos/Frosty_lime.jpg" border="0" /> ';
         }
-            ?> 
-             <?php if(strtolower($rowf['NomCocktail'])=="le vandetta"){
+            else if(strtolower($rowf['NomCocktail'])=="le vandetta"){
             echo '</br><img id="levandetta" src="Photos/Le_vandetta.jpg" border="0" /> ';
         }
-            ?>   
-               <?php if(strtolower($rowf['NomCocktail'])=="margarita"){
+            else if(strtolower($rowf['NomCocktail'])=="margarita"){
             echo '</br><img id="margarita" src="Photos/Margarita.jpg" border="0" /> ';
         }
-            ?>      
-       <?php if(strtolower($rowf['NomCocktail'])=="mojito"){
+            else if(strtolower($rowf['NomCocktail'])=="mojito"){
             echo '</br><img id="mojito" src="Photos/Mojito.jpg" border="0" /> ';
         }
-            ?>  
-               <?php if(strtolower($rowf['NomCocktail'])=="piña colada"){
+            else if(strtolower($rowf['NomCocktail'])=="piña colada"){
             echo '</br><img id="pinacolada" src="Photos/Pina_colada.jpg" border="0" /> ';
         }
-            ?>  
-               <?php if(strtolower($rowf['NomCocktail'])=="raifortissimo"){
+            else if(strtolower($rowf['NomCocktail'])=="raifortissimo"){
             echo '</br><img id="raifortissimo" src="Photos/Raifortissimo.jpg" border="0" /> ';
         }
-            ?>  
-                <?php if(strtolower($rowf['NomCocktail'])=="sangria sans alcool"){
+            else if(strtolower($rowf['NomCocktail'])=="sangria sans alcool"){
             echo '</br><img id="sangria" src="Photos/Sangria_sans_alcool.jpg" border="0" /> ';
         }
-            ?>  
-               <?php if(strtolower($rowf['NomCocktail'])=="screwdriver"){
+            else if(strtolower($rowf['NomCocktail'])=="screwdriver"){
             echo '</br><img id="screwdriver" src="Photos/Screwdriver.jpg" border="0" /> ';
         }
-            ?>  
-               <?php if(strtolower($rowf['NomCocktail'])=="shoot up"){
+            else if(strtolower($rowf['NomCocktail'])=="shoot up"){
             echo '</br><img id="shootup" src="Photos/Shoot_up.jpg" border="0" /> ';
         }
-            ?>  
-               <?php if(strtolower($rowf['NomCocktail'])=="tequila sunrise"){
+            else if(strtolower($rowf['NomCocktail'])=="tequila sunrise"){
             echo '</br><img id="tequila" src="Photos/Tequila_sunrise.jpg" border="0" /> ';
         }
-            ?>  
-                <?php if(strtolower($rowf['NomCocktail'])=="ti punch"){
+            else if(strtolower($rowf['NomCocktail'])=="ti punch"){
             echo '</br><img id="tipunch" src="Photos/Tipunch.jpg" border="0" /> ';
+        }else{
+            echo '</br><img id="logo" src="image/logo.png" border="0" /> ';
         }
             ?>  
                <?php  
-               if('<img id="favoris" src="image/favoris.png" border="0" />';)
+               
                ?>                           
         </br>
         </div>
