@@ -132,12 +132,16 @@ nav ul li:hover ul li {
 #logo{
   display: block;
   width:100px;
-  text-align:left;
-  
+  text-align:left; 
 }
+
 #logo2{
   width:100px;
-
+}
+#logo3{
+  width:60px;
+  
+  text-align: center;
 }
 
 .NomCocktail{
