@@ -6,6 +6,28 @@
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
   </head>
   <body>
+    <nav>
+                <ul>
+                <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
+                <li><a href="">ACCUEIL</a></li>
+                <li><a href="">FAMILLE</a></li>
+                <li><a href="">RECETTES</a>
+                    <ul>
+				        <li><a  href="#">Famille</a></li>
+				        <li><a  href="#">Aliment</a></li>
+				        <li><a  href="#"></a></li>
+			        </ul>
+                </li>
+
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
+                <li>
+                        <input type="search" name="g" placeholder="Rechercher" id="search">  
+                </li>
+                
+                </ul>
+        </nav>
+    
     <div id="container">
       <!-- zone de connexion -->
  
@@ -16,7 +38,7 @@
 
  
         <label><b>Nom d'utilisateur</b></label>
-        <input type="text" placeholder="Entrer le nom d'utilisateur" name="id" required>
+        <input type="text" placeholder="Entrer votre ID" name="id" required>
 
         <label><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrer le mot de passe" name="motDePasse" required>

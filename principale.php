@@ -8,14 +8,35 @@
   </head>
 
   <body>
-    <div id="content">
+  <nav>
+                <ul>
+                <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
+                <li><a href="">ACCUEIL</a></li>
+                <li><a href="">FAMILLE</a></li>
+                <li><a href="">RECETTES</a>
+                    <ul>
+				        <li><a href="#">Drop 1</a></li>
+				        <li><a href="#">Drop 2</a></li>
+				        <li><a href="#">Drop 3</a></li>
+			        </ul>
+                </li>
+
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
+                <li>
+                        <input type="search" name="g" placeholder="Rechercher" id="search">  
+                </li>
+                
+                </ul>
+        </nav>
+    
   
       <!-- Bouton -->
-      <a href="verification.php"> <button name ="db">Créer la database</button></a>
-      <br>
-      <a href="connexion.php"><button>Connexion</button></a>
+      <a id="creerdb" href="verification.php" > <button  name ="db">Créer la database</button></a>
+      
+      <a id="connexion" href="connexion.php"><button>Connexion</button></a>
      
-      <a href="inscription.php"><button>Inscription</button></a>
+      <a id="inscription" href="inscription.php"><button>Inscription</button></a>
      
       <?php
           include "Donnees.inc.php";

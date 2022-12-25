@@ -37,6 +37,7 @@ if(isset($_POST['aliment']))
                 <ul>
                 <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
                 <li><a href="">ACCUEIL</a></li>
+                <li><a href="">FAMILLE</a></li>
                 <li><a href="">RECETTES</a>
                     <ul>
                     <?php 

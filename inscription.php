@@ -5,6 +5,27 @@
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
   </head>
   <body>
+  <nav>
+                <ul>
+                <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
+                <li><a href="">ACCUEIL</a></li>
+                <li><a href="">FAMILLE</a></li>
+                <li><a href="">RECETTES</a>
+                    <ul>
+				        <li><a href="#">Famille</a></li>
+				        <li><a href="#">Aliment</a></li>
+				        <li><a href="#">Drop 3</a></li>
+			        </ul>
+                </li>
+
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
+                <li>
+                        <input type="search" name="g" placeholder="Rechercher" id="search">  
+                </li>
+                
+                </ul>
+        </nav>
     <div id="container">
 
  <form action="" method="POST">
@@ -23,7 +44,7 @@
         <label>Mot de passe</label>
         <input type="password" placeholder="Entrer le mot de passe" name="motDePasse" required>
         <br>
-        <input type="submit" id="" name ="Valider" value="VALIDER" >
+        <input type="submit" id="valider" name ="Valider" value="VALIDER" >
         </fieldset>
         
         </form>
