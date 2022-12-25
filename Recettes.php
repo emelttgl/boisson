@@ -33,19 +33,12 @@ if(isset($_POST['aliment']))
     </head>
     <body>
     <!--<img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/>-->
-         <nav>
+    <nav>
                 <ul>
                 <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
-                <li><a href="">ACCUEIL</a></li>
-                <li><a href="">FAMILLE</a></li>
-                <li><a href="">RECETTES</a>
-                    <ul>
-				        <li><a href="#">Famille/a></li>
-				        <li><a href="#">Aliment</a></li>
-				        <li><a href="#">Drop 3</a></li>
-			        </ul>
-                </li>
-
+                <li><a href="principale.php">ACCUEIL</a></li>
+                <li><a href="famille.php">FAMILLE</a></li>
+                <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><a href="">PANIER</a></li>
                 <li><form>

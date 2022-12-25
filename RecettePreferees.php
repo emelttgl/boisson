@@ -33,27 +33,13 @@ if(isset($_POST['aliment']))
     </head>
     <body>
     <!--<img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/>-->
-         <nav>
+    <nav>
                 <ul>
                 <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
-                <li><a href="">ACCUEIL</a></li>
-                <li><a href="">FAMILLE</a></li>
-                <li><a href="">RECETTES</a>
-                    <ul>
-                    <?php 
-                            
-                            while($rowf = $famille->fetch(PDO::FETCH_ASSOC)){
-                        ?>
-                        <option name="famille" value="<?php echo strtolower($rowf['famille']); ?>"><?php echo htmlspecialchars($rowf['famille']); ?></option>
-                        
-                        <?php
-                            }
-                          
-                        ?>
-			        </ul>
-                </li>
-
-                <li><a href="">MES RECETTES PREFEREES</a></li>
+                <li><a href="principale.php">ACCUEIL</a></li>
+                <li><a href="famille.php">FAMILLE</a></li>
+                <li><a href="Recettes.php">RECETTES</a></li>
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><a href="">PANIER</a></li>
                 <li><form>
                         <input type="search" name="g" placeholder="Rechercher" id="search">  
