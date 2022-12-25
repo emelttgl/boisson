@@ -122,7 +122,10 @@ if(isset($_POST['aliment']))
                 <?php if(strtolower($rowf['NomCocktail'])=="ti punch"){
             echo '</br><img id="tipunch" src="Photos/Tipunch.jpg" border="0" /> ';
         }
-            ?>                                 
+            ?>  
+               <?php  
+               if('<img id="favoris" src="image/favoris.png" border="0" />';)
+               ?>                           
         </br>
         </div>
                         
