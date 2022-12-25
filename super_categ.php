@@ -16,13 +16,20 @@
         $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $aliment = $bdd->query("SELECT nomAliment FROM Aliment ;");
-        if(isset($_POST['famille'])){
-            $choixPrecedent = $_POST['famille'];
-            echo $choixPrecedent;
-            $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent';");
-        }
         $famille = $bdd->query("SELECT distinct(famille) FROM Aliment ;");
         
+        if(isset($_POST['aliment'])){
+            $choixPrecedent = $_POST['aliment'];
+            echo $choixPrecedent;
+            $famille = $bdd->query("SELECT famille FROM Aliment WHERE famille='$choixPrecedent';");
+            $result= $famille->fetch();
+            $count = $result['famille'];
+            //id($count!==0){
+               // $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent';");
+            //}
+           
+        }
+       
         if(($famille === false) || ($aliment === false) ){
             die("Erreur");
         }
@@ -34,9 +41,9 @@
 ?>
   <body>
      <section>    
-        <h2> ALIMENT </h2>
-            <form method="POST" action="super_categ.php">
-                <select name="aliment" id="aliment" onchange= "recupIdSelect(this);">
+        <h2> SUPER_CATEGORIE </h2>
+            <form method="POST" action="">
+                <select name="categ" id="categ" onchange= "recupIdSelect(this);">
                     <?php 
                         while($rowa = $aliment->fetch(PDO::FETCH_ASSOC)){ 
                     ?>
@@ -45,7 +52,6 @@
                  
                     } ?>
                 </select> 
-
                 <input type="submit" value="Valider" />
             </form>
     </section>
