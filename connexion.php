@@ -4,6 +4,7 @@
       <!-- importer le fichier de style -->
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
+      <title> WeDrink</title>
   </head>
   <body>
   <nav>

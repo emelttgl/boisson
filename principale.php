@@ -5,6 +5,7 @@
       <!-- feuille de style a remettre, le texte est blanc sinon impossible de lire l'erreur-->
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/png" href="image/logo.png"/>
+      <title> WeDrink</title>
   </head>
 
   <body>
