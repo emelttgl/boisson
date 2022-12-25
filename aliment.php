@@ -33,6 +33,17 @@
     }
 ?>
   <body>
+  <nav>
+                <ul>
+                <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
+                <li><a href="principale.php">ACCUEIL</a></li>
+                <li><a href="famille.php">FAMILLE</a></li>
+                <li><a href="Recettes.php">RECETTES</a></li>
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
+                <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
+                </ul>
+        </nav>
      <section>    
         <h2> ALIMENT </h2>
             <form method="POST" action="super_categ.php">

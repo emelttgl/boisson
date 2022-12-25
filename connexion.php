@@ -14,10 +14,7 @@
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><a href="">PANIER</a></li>
-                <li><form>
-                        <input type="search" name="g" placeholder="Rechercher" id="search">  
-                </form></li>
-                
+                <li> <input type="search" name="g" placeholder="Rechercher" id="search">   </li>
                 </ul>
         </nav>
     
