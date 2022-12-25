@@ -57,6 +57,14 @@ input[type="text"], input[type="password"]{
  
 }
 
+#bienvenue{
+  font-size:50px;
+  padding: 20px;
+  color:#FFF;
+  display: block;
+  text-align: center;
+}
+
 li{
 color:#FFF;
 padding:10px;
@@ -126,6 +134,10 @@ nav ul li:hover ul li {
   width:100px;
   text-align:left;
   
+}
+#logo2{
+  width:100px;
+
 }
 
 .NomCocktail{

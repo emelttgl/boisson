@@ -20,7 +20,7 @@
                 </ul>
         </nav>
     
-  
+      <h1 id="bienvenue">BIENVENUE CHEZ WEDRINK !!!<img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo2"/></h1>
       <!-- Bouton -->
       <a id="creerdb" href="verification.php" > <button  name ="db">Créer la database</button></a>
       
