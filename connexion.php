@@ -44,7 +44,7 @@
                 }
                 else{
                   
-                  echo "<p style='color:pink'>Utilisateur ou mot de passe incorrect</p>";
+                  echo "<p style='color:red'>Utilisateur ou mot de passe incorrect !</p>";
                 }
               }
               catch(Exception $e){

@@ -7,10 +7,10 @@ label {
 }
 body {
   background:url(image/boisson.jpg)no-repeat center fixed; 
-  width: 50%;
+  width: 100%;
   font-family:Arial, Helvetica, sans-serif;
-  margin: 70px auto;
-  padding: 10px;
+  margin: 0px auto;
+  padding: 0px;
   color: white;
 }
 fieldset{
@@ -26,4 +26,82 @@ input[type="text"], input[type="password"]{
   width: 70%;
   background-color: gray;
   margin: 10px;
+}
+li{
+  color:#FFF;
+padding:10px;
+font-size:20px;
+text-decoration:none;
+}
+nav{
+  background-color: palevioletred;
+ height: 130px;
+}
+
+nav ul {
+  background-color: palevioletred;
+  padding:0;
+  margin:0;
+
+}
+nav ul li{
+  list-style: none;
+line-height:90px;
+float:left;
+background-color: palevioletred;
+}
+
+nav ul li a{
+  color:#FFF;
+  padding:10px;
+  font-size:20px;
+  text-decoration:none;
+}
+nav ul li ul{
+  display: none;
+}
+nav ul li:hover ul { 
+  z-index:99999;
+  display:list-item ;
+  position:absolute;
+  margin-top:5px;
+  margin-left:-10px;
+}
+
+li a:hover{
+  color:pink;
+}
+
+nav ul li:hover ul li {
+  float:none;
+  }
+
+#search{
+  width:150px;
+  
+}
+
+#logo{
+  display: block;
+  width:100px;
+  text-align:left;
+  
+}
+
+.NomCocktail{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
+  border-style: solid;
+  text-align: center;
+  padding: 50px;
+}
+
+#nomcocktail{
+  border-style: solid;
+  border-radius: 20px;
+  padding: 50px ;
+  line-height: 30px;
+  margin: 20px;
+  border-width: 6px;
 }

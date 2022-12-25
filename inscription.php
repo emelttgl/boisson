@@ -10,7 +10,7 @@
  <form action="" method="POST">
         <fieldset>
         <legend>Inscription</legend>
-        <p style='color:pink'> ID SE CREER AUTOMATIQUEMENT après le clique sur valider</p>
+        <p style='color:white'> ID SE CREER AUTOMATIQUEMENT après le clique sur valider</p>
         <label>Nom</label>
         <input type="text" placeholder="Nom" name="nom">
         <br>
