@@ -3,11 +3,11 @@
     <meta charset="utf-8">
  
       <!-- feuille de style a remettre, le texte est blanc sinon impossible de lire l'erreur-->
-      <link rel="stylesheet" href="" media="screen" type="text/css" />
-      <link rel="icon" type="image/jpg" href="image/logo.png"/>
+      <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+      <link rel="icon" type="image/png" href="image/logo.png"/>
   </head>
 
-  <body style='background:#fff;'>
+  <body>
     <div id="content">
   
       <!-- Bouton -->
