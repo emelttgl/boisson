@@ -123,5 +123,3 @@ document.write("textselectionne")
 </html>
 
 
-
-
