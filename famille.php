@@ -25,9 +25,13 @@
     if(isset($_POST['categ'])){
         $choix = $_POST['categ'];
         $_SESSION['categ'] = $choix;
+    
         //echo $choix;
     }
-    
+    if( $_SESSION['categ']){
+        $_SESSION['categ'] = $_SESSION['aliment'];
+        //echo $choix;
+    }
 
 
   
