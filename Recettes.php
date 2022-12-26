@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $db_username = 'root';
 $db_password = 'root';
@@ -8,20 +9,39 @@ $db_host = 'localhost';
 try{
     $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
     $NomCocktail = $bdd->query("SELECT distinct(NomCocktail) FROM Recettes ;");
-    $aliment = $bdd->query("SELECT nomAliment FROM Aliment ;");
-
-    if(($NomCocktail === false) || ($NomCocktail === false)){
+    $idCocktail = $bdd->query("SELECT distinct(idRecette) FROM Recettes ;");
+    $idCocktail2 = $bdd->query("SELECT distinct(idRecette) FROM Recettes ;");
+    $NomCocktail2 = $bdd->query("SELECT distinct(NomCocktail) FROM Recettes ;");
+  
+  
+    if(($NomCocktail === false) && ($idCocktail === false)){
         die("Erreur");
-       }
+    }
+
+    while($rowa = $idCocktail2->fetch(PDO::FETCH_ASSOC)){
+        $val = htmlspecialchars($rowa['idRecette']);
+        
+        if(isset($_POST[$val]) && isset($_SESSION['id'])){
+            //echo htmlspecialchars($rowf['NomCocktail']);
+           // echo 'ici';
+            $id=$_SESSION['id'];
+            //echo  $val;
+            $Nom= $bdd->query("SELECT NomCocktail FROM Recettes Where idRecette = '$val' ;");
+            $result= $Nom->fetch(PDO::FETCH_ASSOC);
+            $cocktail =htmlspecialchars($result['NomCocktail']);
+            //echo $cocktail;
+            $req = $bdd->query("INSERT INTO `Panier`(idUsers, nomCocktail) VALUES ('$id', '$cocktail');");
+        }
+
+    }
 }
-catch (PDOException $e){
-    echo $e->getMessage();
+catch(Exception $e){
+            
+    die($e->getMessage());
 }
 
-if(isset($_POST['aliment']))
-     {
-           echo htmlentities($_POST['aliment']);
-     }
+            
+   
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,20 +59,31 @@ if(isset($_POST['aliment']))
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><a href="">PANIER</a></li>
+                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
+        <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
+        
         <div class="NomCocktail">
+       
         <?php 
+        if(!isset($_SESSION['id'])){
+            echo"UNE INSCRIPTION EST NECESSAIRE!!!";
+            ?><a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a> <?php 
+        }
                             
-                while($rowf = $NomCocktail->fetch(PDO::FETCH_ASSOC)){
+            while($rowf = $NomCocktail->fetch(PDO::FETCH_ASSOC) ){
+                $rowi = $idCocktail->fetch(PDO::FETCH_ASSOC)
+                
          ?>
+        
         <div id="nomcocktail" name="NomCocktail" value="<?php echo strtolower($rowf['NomCocktail']); ?>">
-        <?php echo htmlspecialchars($rowf['NomCocktail']); ?><?php  echo '<img id="favoris" src="image/favoris.png" border="0" />'; ?>
+        
+        <?php echo htmlspecialchars($rowf['NomCocktail']); ?>
         <?php if(strtolower($rowf['NomCocktail'])=="black velvet"){
             echo '<img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
+           
         }
            else if(strtolower($rowf['NomCocktail'])=="bloody mary"){
             echo '</br><img id="bloodymary" src="Photos/Bloody_mary.jpg" border="0" /> ';
@@ -107,16 +138,29 @@ if(isset($_POST['aliment']))
         }else{
             echo '</br><img id="logo3" src="image/logo.png" border="0" /> ';
         }
-            ?>  
+
+       $val = htmlspecialchars($rowi['idRecette']); 
+       //echo $val;
+    ?>  
+             </br>
+            <button type=submit name="<?php echo $val; ?>"title ="Ajouter" >    
+            <img id="favoris" src="image/favoris.png" />
+
+    </button>
+    
                                       
         </br>
+       
         </div>
-                        
+        
         <?php
-                }
-                        
+            }
+        
+
         ?>
     
        </div>
+       
+       </form>
     </body>
 </html>

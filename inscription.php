@@ -12,8 +12,7 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><a href="">PANIER</a></li>
+                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li> <input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
@@ -27,10 +26,28 @@
         <input type="text" placeholder="Nom" name="nom">
         <br>
         <label>Prénom</label>
-        <input type="text" placeholder="Prénom" name="prenom" required>
+        <input type="text" placeholder="Prénom" name="prenom">
+        <br>
+        <label>Sexe</label>
+        <input type="text" placeholder="Sexe" name="sexe">
+        <br>
+        <label>Date de naissance</label>
+        <input type="text" placeholder="Date de naissance" name="date_naiss">
+        <br>
+        <label>Adresse</label>
+        <input type="text" placeholder="Adresse" name="adresse">
+        <br>
+        <label>Code postal</label>
+        <input type="text" placeholder="Code postal" name="code_postal">
+        <br>
+        <label>Ville</label>
+        <input type="text" placeholder="Ville" name="ville">
+        <br>
+        <label>Numéro</label>
+        <input type="text" placeholder="Numéro" name="numero">
         <br>
         <label>Mail</label>
-        <input type="text" placeholder="Mail" name="mail">
+        <input type="text" placeholder="Mail" name="mail" required>
         <br>
         <label>Mot de passe</label>
         <input type="password" placeholder="Entrer le mot de passe" name="motDePasse" required>

@@ -48,7 +48,7 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>                
+                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>                
                 <li><form method="GET" action=""> <input type="search" id="search" name="g" placeholder="Rechercher" ><input type="SUBMIT" value="Rechercher">
                 </form></li>
                 </ul>

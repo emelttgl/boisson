@@ -15,8 +15,7 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><a href="">PANIER</a></li>
+                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
@@ -133,7 +132,7 @@
         catch(Exception $e){
            // Message d'erreur
           if(("SQLSTATE[42S02]: Base table or view not found: 1146 Table 'boisson.recettes' doesn't exist" == $e->getMessage()) || ("SQLSTATE[HY000] [1049] Unknown database 'boisson'" == $e->getMessage())){
-            echo "<p style='color:pink'>CREER LA DATABASE</p>";
+            echo " <h1 id='bienvenue'>CREER LA DATABASE</h1>";
           }
           else{
             die($e->getMessage());

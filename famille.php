@@ -9,8 +9,7 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><a href="">PANIER</a></li>
+                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
@@ -21,19 +20,18 @@
     if(isset($_POST['famille'])){
         $choix = $_POST['famille'];
         //echo $choix;
-    }
+    
     if(isset($_POST['categ'])){
+        
         $choix = $_POST['categ'];
         $_SESSION['categ'] = $choix;
     
         //echo $choix;
     }
-    if(isset($_SESSION['categ'])){
-        $_SESSION['categ'] = $_SESSION['aliment'];
+
         //echo $choix;
     }
-
-
+    
   
     $db_username = 'root';
     $db_password = 'root';
@@ -48,6 +46,10 @@
         
         if(empty($_SESSION['categ']) && isset($_SESSION['categ'])){
             $_SESSION['categ'] = $_SESSION['aliment'];
+        }
+        if(empty($_SESSION['aliment']) && isset($_SESSION['aliment'])){
+            $_SESSION['aliment'] = $_SESSION['famille'];
+            $_SESSION['categ'] = $_SESSION['famille'];
         }
     
         $val = '|'.$_SESSION['categ'].'|';
@@ -148,12 +150,15 @@
             <?php  
                     if(isset($_SESSION['famille'])){
                         echo $_SESSION['famille']. ' > ';
+                        $_SESSION['famille'] = "";
                     }
                     if(isset($_SESSION['aliment'])){
                         echo $_SESSION['aliment'].' > ';
+                        $_SESSION['aliment'] = "";
                     }
                     if(isset($_SESSION['categ'])){
                         echo $_SESSION['categ'].' > ';
+                        $_SESSION['categ'] ="";
                     }
                     ?>
             

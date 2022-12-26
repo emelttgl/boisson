@@ -1,27 +1,25 @@
 <?php
+session_start();
 
 $db_username = 'root';
 $db_password = 'root';
 $db_name = 'boisson';
 $db_host = 'localhost';
-
+if(isset($_SESSION['id'])){
 try{
+
     $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
-    $famille = $bdd->query("SELECT distinct(famille) FROM Aliment ;");
-    $aliment = $bdd->query("SELECT nomAliment FROM Aliment ;");
+    $NomCocktail = $bdd->query("SELECT distinct(nomCocktail) FROM Panier ;");
 
-    if(($famille === false) || ($aliment === false)){
-        die("Erreur");
-       }
+    
 }
-catch (PDOException $e){
-    echo $e->getMessage();
+catch(Exception $e){
+            
+    die($e->getMessage());
 }
 
-if(isset($_POST['aliment']))
-     {
-           echo htmlentities($_POST['aliment']);
-     }
+}         
+   
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,7 +27,7 @@ if(isset($_POST['aliment']))
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
         <link rel="icon" type="image/png" href="image/logo.png"/>
-        <title> ></title>
+        <title> WeDrink</title>
     </head>
     <body>
     <!--<img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/>-->
@@ -40,89 +38,99 @@ if(isset($_POST['aliment']))
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><a href="">PANIER</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
-      
-   <form method="POST" action="aliment.php">
-    <section>
-        <article>
-            <div id=famille>
-                       
-
-                <h2>Famille</h2>
-                <form method="POST" action="" name="famille">
-                <select name='famille' id='familles'>
-                        
-                    <option selected="selected">Sélectionner une famille d'aliment</option>
-                        <?php 
+        <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
+        
+        <div class="NomCocktail">
+       
+        <?php 
+        if(!isset($_SESSION['id'])){
+            echo"UNE INSCRIPTION EST NECESSAIRE!!!";
+            ?><a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a> <?php 
+        }
                             
-                            while($rowf = $famille->fetch(PDO::FETCH_ASSOC)){
-                        ?>
-                        <option name="famille" value="<?php echo strtolower($rowf['famille']); ?>"><?php echo htmlspecialchars($rowf['famille']); ?></option>
-                        
-                        <?php
-                            }
-                          
-                        ?>
+            while($rowf = $NomCocktail->fetch(PDO::FETCH_ASSOC) ){
+               
+                
+         ?>
+        
+        <div id="nomcocktail" name="nomCocktail" value="<?php echo strtolower($rowf['nomCocktail']); ?>">
+        
+        <?php echo htmlspecialchars($rowf['nomCocktail']); ?>
+        <?php if(strtolower($rowf['nomCocktail'])=="black velvet"){
+            echo '<img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
+           
+        }
+           else if(strtolower($rowf['nomCocktail'])=="bloody mary"){
+            echo '</br><img id="bloodymary" src="Photos/Bloody_mary.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="bora bora"){
+            echo '</br><img id="borabora" src="Photos/Bora_bora.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="builder"){
+            echo '</br><img id="builder" src="Photos/Builder.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="caïpirinha"){
+            echo '</br><img id="caipirinha" src="Photos/Caipirinha.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="coconut kiss"){
+            echo '</br><img id="cocokiss" src="Photos/Coconut_kiss.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="cuba libre"){
+            echo '</br><img id="cubalibre" src="Photos/Cuba_libre.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="frosty lime"){
+            echo '</br><img id="frostylime" src="Photos/Frosty_lime.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="le vandetta"){
+            echo '</br><img id="levandetta" src="Photos/Le_vandetta.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="margarita"){
+            echo '</br><img id="margarita" src="Photos/Margarita.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="mojito"){
+            echo '</br><img id="mojito" src="Photos/Mojito.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="piña colada"){
+            echo '</br><img id="pinacolada" src="Photos/Pina_colada.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="raifortissimo"){
+            echo '</br><img id="raifortissimo" src="Photos/Raifortissimo.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="sangria sans alcool"){
+            echo '</br><img id="sangria" src="Photos/Sangria_sans_alcool.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="screwdriver"){
+            echo '</br><img id="screwdriver" src="Photos/Screwdriver.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="shoot up"){
+            echo '</br><img id="shootup" src="Photos/Shoot_up.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="tequila sunrise"){
+            echo '</br><img id="tequila" src="Photos/Tequila_sunrise.jpg" border="0" /> ';
+        }
+            else if(strtolower($rowf['nomCocktail'])=="ti punch"){
+            echo '</br><img id="tipunch" src="Photos/Tipunch.jpg" border="0" /> ';
+        }else{
+            echo '</br><img id="logo3" src="image/logo.png" border="0" /> ';
+        }
 
-                        <?php 
-                            
-                          
-                        ?>
-<h1>
-    <script>
-var selectElmt = document.getElementById("familles");
-var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
-var textselectionne = selectElmt.options[selectElmt.selectedIndex].text;
-document.write("textselectionne")
-</script></h1>
-                          </select>
-                </ul>
-            </div>
-        </article>
-        </section>
-        <input type="submit" id="" name ="Valider" value="VALIDER" >
+       
+    ?>  
+            
+       
+     </div>
+        
+        <?php
+            }
+        
+
+        ?>
     
-    </form>
-    
-    <section>
-        <article>
-            <div id=aliment>
-                <h2>Aliment</h2>
-                <select >
-                    <option selected="selected">Sélectionner un Aliment</option>
-                        <?php
-                        
-                            $alimentF = $bdd->query("SELECT nomAliment FROM Aliment WHERE  ;");
-                            while($rowa = $aliment->fetch(PDO::FETCH_ASSOC)){
-                        ?>
-                        <option value="<?php echo strtolower($rowa['nomAliment']); ?>"><?php echo htmlspecialchars($rowa['nomAliment']); ?></option>
-                        <?php
-                            }
-                        ?>
-
-
-                     </select>
-                </ul>
-            </div>
-        </article>
-
-    </section>
-
-
-    <!-- PIED DE PAGE -->
-    <footer>
-      <!--  <p><a href="index.php" id="lien_page_principale">Revenir à la page principale</a></p>-->
-    </footer> 
-                     
- 
-
-
-</body>
+       </div>
+       
+       </form>
+    </body>
 </html>
-
-
-
-
