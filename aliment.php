@@ -12,15 +12,27 @@
     $db_password = 'root';
     $db_name = 'boisson';
     $db_host = 'localhost';        
-   
+    $choixPrecedent='';
     try{
+      
         $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $aliment = $bdd->query("SELECT nomAliment FROM Aliment ;");
         if(isset($_POST['famille'])){
             $choixPrecedent = $_POST['famille'];
-            echo $choixPrecedent;
-            $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent';");
+            $_SESSION['famille']= $choixPrecedent;
+            if(isset($_SESSION['categ'])){
+               
+                $_SESSION['categ']= "";
+               
+            }    
+            
+           
+
+            //echo $_SESSION['famille'];
+            $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
+            $recette =  $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent';");
+            
         }
         $famille = $bdd->query("SELECT distinct(famille) FROM Aliment ;");
         
@@ -40,7 +52,8 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>                <li><a href="">PANIER</a></li>
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
@@ -53,10 +66,12 @@
                     ?>
                     <option value="<?php echo strtolower($rowa['nomAliment']); ?>"><?php echo htmlspecialchars($rowa['nomAliment']); ?></option>
                     <?php 
-                 
-                    } ?>
-                </select> 
 
+                    } ?>
+                    
+                   
+                </select> 
+                <p> <?php echo $choixPrecedent.'>';?></p>
                 <input type="submit" value="Valider" />
             </form>
     </section>

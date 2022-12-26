@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
       <title> WeDrink</title>
@@ -11,7 +11,9 @@
     $db_username = 'root';
     $db_password = 'root';
     $db_name = 'boisson';
-    $db_host = 'localhost';        
+    $db_host = 'localhost';      
+    $choixPrecedent='';  
+    $choixPrecPrec='';  
    
     try{
         $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
@@ -19,17 +21,23 @@
         $aliment = $bdd->query("SELECT nomAliment FROM Aliment ;");
         $famille = $bdd->query("SELECT distinct(famille) FROM Aliment ;");
         
+       
         if(isset($_POST['aliment'])){
             $choixPrecedent = $_POST['aliment'];
-            echo $choixPrecedent;
+            $_SESSION['aliment']= $choixPrecedent;
+            //echo $_SESSION['aliment'];
             $famille = $bdd->query("SELECT famille FROM Aliment WHERE famille='$choixPrecedent';");
             $result= $famille->fetch();
             $count = $result['famille'];
-            //id($count!==0){
-               // $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent';");
-            //}
+            if($count != 0){
+                $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
+            }
+           
+           
+        
            
         }
+        
        
         if(($famille === false) || ($aliment === false) ){
             die("Erreur");
@@ -47,22 +55,39 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>                <li><a href="">PANIER</a></li>
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
      <section>    
-        <h2> SUPER_CATEGORIE </h2>
-            <form method="POST" action="">
+        <h2> SOUS_ALIMENT </h2>
+            <form method="POST" action="famille.php">
                 <select name="categ" id="categ" onchange= "recupIdSelect(this);">
+                <option value="rien" ?><?php echo ""; ?></option>
                     <?php 
                         while($rowa = $aliment->fetch(PDO::FETCH_ASSOC)){ 
                     ?>
                     <option value="<?php echo strtolower($rowa['nomAliment']); ?>"><?php echo htmlspecialchars($rowa['nomAliment']); ?></option>
                     <?php 
                  
-                    } ?>
+                    } 
+                    ?>
+                     
                 </select> 
+                <?php
+                if(isset($_SESSION['famille'])){
+                    $choixPrecedent = $_SESSION['famille'];
+                }
+                
+                if(isset($_SESSION['aliment'])){
+                    $choixPrecPrec = $_SESSION['aliment'];
+                   
+                
+                }
+                ?>
+                <p><?php echo $choixPrecedent.'>';?>
+                <?php echo $choixPrecPrec.'>';?></p>
                 <input type="submit" value="Valider" />
             </form>
     </section>

@@ -15,7 +15,8 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>                <li><a href="">PANIER</a></li>
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
@@ -64,12 +65,10 @@
           $result= $req->fetch();
           $count = $result['Nb'];
 
-          $req1 = $bdd->query("SELECT count(*) as Nb FROM Liaison;");
-          $result1= $req1->fetch();
-          $count1 = $result1['Nb'];
+          
 
           //AJOUT DES DONNEES DE LA TABLE RECETTES DANS RECETTES
-          if($count == 0 && $count1 == 0){
+          if($count == 0){
             for ($i=0; $i <count($Recettes) ; $i++) {
               $titre=$Recettes[$i]["titre"];
               $titre = str_replace($caraS, $caraN, $titre); //fonction qui enleve les caracteres spéciaux
@@ -81,15 +80,21 @@
               $preparation = str_replace($caraS, $caraN, $preparation); //fonction qui enleve les caracteres spéciaux
               //echo "</br>";
             
-              //AJOUT DES DONNEES DE LA TABLE INDEX DANS LIAISON
+              //AJOUT DES DONNEES DE LA TABLE INDEX DANS RECETTES
+              $count = " ";
               for ($j=0; $j <count($Recettes[$i]["index"]) ; $j++) {
-                $index = str_replace($caraS, $caraN, $Recettes[$i]["index"][$j]);
-                //echo "</br>";
-                $req = $bdd->query("INSERT INTO `Liaison`(`nomAliment`) VALUES('$index');");
+                  
+                $val= str_replace($caraS, $caraN, $Recettes[$i]["index"][$j]);
+                $val =strtolower($val);
+                $count =$count."|".$val ;
+                
               }
-              $req = $bdd->query("INSERT INTO `Recettes`(`NomCocktail`, `preparation`, `ingredient`) VALUES('$titre' , '$preparation', '$ingredient');");
-            
+              $count =$count."|";
+              //echo " ".$count;
+              $req = $bdd->query("INSERT INTO `Recettes`(`NomCocktail`, `preparation`, `ingredient`, nomIngredient) VALUES('$titre' , '$preparation', '$ingredient', '$count');");
+                
             }
+            
           } 
           //AJOUT DES DONNEES DE LA TABLE HIERARCHIE DANS ALIMENT
           $req = $bdd->query("SELECT count(*) as Nb FROM Aliment;");

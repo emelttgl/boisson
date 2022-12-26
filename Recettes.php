@@ -39,7 +39,8 @@ if(isset($_POST['aliment']))
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>
+                <li><a href="">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><a href="">PANIER</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
@@ -107,9 +108,7 @@ if(isset($_POST['aliment']))
             echo '</br><img id="logo3" src="image/logo.png" border="0" /> ';
         }
             ?>  
-               <?php  
-               
-               ?>                           
+                                      
         </br>
         </div>
                         

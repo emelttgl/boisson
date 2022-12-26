@@ -227,10 +227,6 @@ nav ul li:hover ul li {
   width: 30px;
   text-align: right;
 }
-#favoris2{
-  width: 23px;
-  
-}
 #favoris:hover{
   color:red;
   background-color: pink;
