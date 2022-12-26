@@ -3,6 +3,8 @@
     <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
+      <title> WeDrink/Famille</title>
+      </head>
       <nav>
                 <ul>
                 <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
@@ -13,8 +15,9 @@
                 <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
                 </ul>
         </nav>
-        <h2> FAMILLE </h2>
-  </head>
+        <h2 id="fami"> FAMILLE </h2>
+        <a id="al">Voici les boissons contenant l'aliment choisi : </a>
+  
   <?php
     session_start();
     if(isset($_POST['famille'])){
@@ -55,9 +58,17 @@
         $val = '|'.$_SESSION['categ'].'|';
         
         $cocktail = $bdd->query("SELECT NomCocktail FROM Recettes WHERE LOWER(nomIngredient) LIKE '%$val%';");
+        ?>
+       
+        <div class="boissonchoisis">
+       
+            <?php
             while($rowc = $cocktail->fetch(PDO::FETCH_ASSOC)){
-                
-                echo htmlspecialchars($rowc['NomCocktail']);
+                ?>
+                <div id="boissonchoisi" >
+                <?php
+                echo htmlspecialchars($rowc['NomCocktail']);?>
+                <?php
                 if(strtolower($rowc['NomCocktail'])=="black velvet"){
                     echo '<img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
                 }
@@ -114,10 +125,17 @@
                 }else{
                     echo '</br><img id="logo3" src="image/logo.png" border="0" /> ';
                 }
+                ?>
+                </div> 
+                <?php
              }
         
         
-        
+             ?>
+
+              
+             </div>
+             <?php
         if(($famille === false) || ($aliment === false) ){
             die("Erreur");
         }
@@ -145,7 +163,9 @@
                     ?>
                   
             </select> 
-            <input type="submit" value="Valider" />
+            <input id="valider2" type="submit" value="Valider" /></br>
+            <div class="chemin">
+           <p>Voici le chemin : </p>
            
             <?php  
                     if(isset($_SESSION['famille'])){
@@ -161,7 +181,7 @@
                         $_SESSION['categ'] ="";
                     }
                     ?>
-            
+            </div>
         </form>
        
     </section>

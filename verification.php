@@ -25,7 +25,6 @@
 
             CREATE TABLE Panier (id int(100) AUTO_INCREMENT PRIMARY KEY , idUsers int(100) NOT NULL, nomCocktail VARCHAR(400)  NOT NULL);
  
-            
            ";
             $dbco->exec($sql);
                     

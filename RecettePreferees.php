@@ -27,7 +27,7 @@ catch(Exception $e){
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
         <link rel="icon" type="image/png" href="image/logo.png"/>
-        <title> WeDrink</title>
+        <title> WeDrink/RecettesPreferees</title>
     </head>
     <body>
     <!--<img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/>-->

@@ -3,7 +3,7 @@
     <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
-      <title> WeDrink</title>
+      <title> WeDrink/Recherche</title>
   </head>
   <?php
     session_start();
@@ -48,9 +48,8 @@
                 <li><a href="principale.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
-                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES<img id="favoris2" src="image/favoris.png" /></a></li>                
-                <li><form method="GET" action=""> <input type="search" id="search" name="g" placeholder="Rechercher" ><input type="SUBMIT" value="Rechercher">
-                </form></li>
+                <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
+                <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
                 </ul>
         </nav>
         <section class="affichercocktail">

@@ -3,7 +3,7 @@
   <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
-      <title> WeDrink</title>
+      <title> WeDrink/SousAliment</title>
   </head>
   <?php
     session_start();
@@ -56,11 +56,12 @@
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
+                <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
+
                 </ul>
         </nav>
      <section>    
-        <h2> SOUS_ALIMENT </h2>
+     <h2 id="fami"> SOUS ALIMENT </h2>
             <form method="POST" action="famille.php">
                 <select name="categ" id="categ" onchange= "recupIdSelect(this);">
                 <option value="rien" ?><?php echo ""; ?></option>
@@ -74,6 +75,7 @@
                     ?>
                      
                 </select> 
+                <input id="valider2" type="submit" value="Valider" />
                 <?php
                 if(isset($_SESSION['famille'])){
                     $choixPrecedent = $_SESSION['famille'];
@@ -85,9 +87,9 @@
                 
                 }
                 ?>
-                <p><?php echo $choixPrecedent.'>';?>
+                <p class ="chemin">Voici le chemin : ><?php echo $choixPrecedent.'>';?>
                 <?php echo $choixPrecPrec.'>';?></p>
-                <input type="submit" value="Valider" />
+                
             </form>
     </section>
          <!--<script>

@@ -5,7 +5,7 @@
       <!-- feuille de style a remettre, le texte est blanc sinon impossible de lire l'erreur-->
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/png" href="image/logo.png"/>
-      <title> WeDrink</title>
+      <title> WeDrink/Accueil</title>
   </head>
 
   <body>
@@ -16,7 +16,7 @@
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
+                <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
                 </ul>
         </nav>
     

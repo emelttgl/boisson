@@ -3,7 +3,7 @@
     <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
-      <title> WeDrink</title>
+      <title> WeDrink/Aliment</title>
   </head>
   <?php
     session_start();
@@ -53,11 +53,11 @@
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><input type="search" name="g" placeholder="Rechercher" id="search">  </li>
+                <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
                 </ul>
         </nav>
      <section>    
-        <h2> ALIMENT </h2>
+     <h2 id="fami"> ALIMENT </h2>
             <form method="POST" action="super_categ.php">
                 <select name="aliment" id="aliment" onchange= "recupIdSelect(this);">
                     <?php 
@@ -69,9 +69,9 @@
                     } ?>
                     
                    
-                </select> 
-                <p> <?php echo $choixPrecedent.'>';?></p>
-                <input type="submit" value="Valider" />
+                </select> <input id="valider2" type="submit" value="Valider" />
+                <p class="chemin">Voici le chemin : <?php echo $choixPrecedent.'>';?></p>
+               
             </form>
     </section>
          <!--<script>
