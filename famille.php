@@ -28,7 +28,7 @@
     
         //echo $choix;
     }
-    if( $_SESSION['categ']){
+    if(isset($_SESSION['categ'])){
         $_SESSION['categ'] = $_SESSION['aliment'];
         //echo $choix;
     }
@@ -46,7 +46,7 @@
         $famille = $bdd->query("SELECT distinct(famille) FROM Aliment WHERE categorie LIKE 'super-categorie';");
         $aliment = $bdd->query("SELECT distinct(nomAliment) FROM Aliment ;");
         
-        if(empty($_SESSION['categ'])){
+        if(empty($_SESSION['categ']) && isset($_SESSION['categ'])){
             $_SESSION['categ'] = $_SESSION['aliment'];
         }
     
