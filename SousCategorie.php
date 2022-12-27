@@ -1,9 +1,9 @@
 <html>
   <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
       <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
       <link rel="icon" type="image/jpg" href="image/logo.png"/>
-      <title> WeDrink/Aliment</title>
+      <title> WeDrink/SousAliment</title>
   </head>
   <?php
     session_start();
@@ -11,31 +11,34 @@
     $db_username = 'root';
     $db_password = 'root';
     $db_name = 'boisson';
-    $db_host = 'localhost';        
-    $choixPrecedent='';
+    $db_host = 'localhost';      
+    $choixPrecedent='';  
+    $choixPrecPrec='';  
+   
     try{
-      
         $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $aliment = $bdd->query("SELECT nomAliment FROM Aliment ;");
-        if(isset($_POST['famille'])){
-            $choixPrecedent = $_POST['famille'];
-            $_SESSION['famille']= $choixPrecedent;
-            if(isset($_SESSION['categ'])){
-               
-                $_SESSION['categ']= "";
-               
-            }    
-            
-           
-
-            //echo $_SESSION['famille'];
-            $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
-            $recette =  $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent';");
-            
-        }
         $famille = $bdd->query("SELECT distinct(famille) FROM Aliment ;");
         
+       
+        if(isset($_POST['aliment'])){
+            $choixPrecedent = $_POST['aliment'];
+            $_SESSION['aliment']= $choixPrecedent;
+            //echo $_SESSION['aliment'];
+            $famille = $bdd->query("SELECT famille FROM Aliment WHERE famille='$choixPrecedent';");
+            $result= $famille->fetch();
+            $count = $result['famille'];
+            if($count != 0){
+                $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
+            }
+           
+           
+        
+           
+        }
+        
+       
         if(($famille === false) || ($aliment === false) ){
             die("Erreur");
         }
@@ -54,24 +57,39 @@
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
+
                 </ul>
         </nav>
      <section>    
-     <h2 id="fami"> ALIMENT </h2>
-            <form method="POST" action="SousCategorie.php">
-                <select name="aliment" id="aliment" onchange= "recupIdSelect(this);">
+     <h2 id="fami"> SOUS ALIMENT </h2>
+            <form method="POST" action="Famille.php">
+                <select name="categ" id="categ" onchange= "recupIdSelect(this);">
+                <option value="rien" ?><?php echo ""; ?></option>
                     <?php 
                         while($rowa = $aliment->fetch(PDO::FETCH_ASSOC)){ 
                     ?>
                     <option value="<?php echo strtolower($rowa['nomAliment']); ?>"><?php echo htmlspecialchars($rowa['nomAliment']); ?></option>
                     <?php 
-
-                    } ?>
-                    
+                 
+                    } 
+                    ?>
+                     
+                </select> 
+                <input id="valider2" type="submit" value="Valider" />
+                <?php
+                if(isset($_SESSION['famille'])){
+                    $choixPrecedent = $_SESSION['famille'];
+                }
+                
+                if(isset($_SESSION['aliment'])){
+                    $choixPrecPrec = $_SESSION['aliment'];
                    
-                </select> <input id="valider2" type="submit" value="Valider" />
-                <p class="chemin">Voici le chemin : <?php echo $choixPrecedent.'>';?></p>
-               
+                
+                }
+                ?>
+                <p class ="chemin">Voici le chemin : ><?php echo $choixPrecedent.'>';?>
+                <?php echo $choixPrecPrec.'>';?></p>
+                
             </form>
     </section>
          <!--<script>

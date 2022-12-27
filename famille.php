@@ -8,7 +8,7 @@
       <nav>
                 <ul>
                 <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
-                <li><a href="principale.php">ACCUEIL</a></li>
+                <li><a href="Accueil.php">ACCUEIL</a></li>
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
@@ -149,7 +149,7 @@
  
     <section>
        
-        <form method="POST" action="aliment.php">
+        <form method="POST" action="Aliment.php">
             <select name="famille" id ="famille"  onchange= "recupIdSelect(this);">
               
             <?php 

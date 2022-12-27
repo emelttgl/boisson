@@ -10,8 +10,8 @@
   <nav>
                 <ul>
                 <li><img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo"/></li>
-                <li><a href="principale.php">ACCUEIL</a></li>
-                <li><a href="famille.php">FAMILLE</a></li>
+                <li><a href="Accueil.php">ACCUEIL</a></li>
+                <li><a href="Famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
@@ -52,7 +52,7 @@
                 if($count!=0){ // nom d'utilisateur et mot de passe correctes
         
                   $_SESSION['id'] = $id;
-                  header('Location: principale.php');
+                  header('Location: Accueil.php');
                 }
                 else{
                   
