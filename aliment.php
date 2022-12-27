@@ -25,7 +25,7 @@
                
                 $_SESSION['categ']= "";
                
-            }    
+            }       
             
            
 
@@ -60,6 +60,7 @@
      <h2 id="fami"> ALIMENT </h2>
             <form method="POST" action="SousCategorie.php">
                 <select name="aliment" id="aliment" onchange= "recupIdSelect(this);">
+                <option value="" ?><?php echo ""; ?></option>
                     <?php 
                         while($rowa = $aliment->fetch(PDO::FETCH_ASSOC)){ 
                     ?>

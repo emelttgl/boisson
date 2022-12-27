@@ -20,12 +20,15 @@
   
   <?php
     session_start();
+    if(isset($_POST['categ'])){
+        $_SESSION['categ']=$_POST['categ'];
+    }
     if(isset($_POST['famille'])){
         $choix = $_POST['famille'];
-        //echo $choix;
+        echo $choix;
     
-    if(isset($_POST['categ'])){
-        
+    if(!isset($_POST['categ'])){
+        echo 'iic'.isset($_POST['categ']);
         $choix = $_POST['categ'];
         $_SESSION['categ'] = $choix;
     
@@ -168,19 +171,33 @@
            <p>Voici le chemin : </p>
            
             <?php  
-                    if(isset($_SESSION['famille'])){
-                        echo $_SESSION['famille']. ' > ';
-                        $_SESSION['famille'] = "";
-                    }
-                    if(isset($_SESSION['aliment'])){
-                        echo $_SESSION['aliment'].' > ';
-                        $_SESSION['aliment'] = "";
-                    }
-                    if(isset($_SESSION['categ'])){
-                        echo $_SESSION['categ'].' > ';
-                        $_SESSION['categ'] ="";
-                    }
-                    ?>
+                    if(isset($_POST['categ'])){
+                        $_SESSION['categ']=$_POST['categ'];}
+                                
+                                if(isset($_SESSION['famille'])){
+                                    echo $_SESSION['famille']. ' > ';
+                                    
+                                }
+                                if(isset($_SESSION['aliment'])){
+                                     
+                                    if(empty($_SESSION['aliment'])){
+                                        $_SESSION['aliment']=$_SESSION['famille'];
+                                    }
+                                    echo $_SESSION['aliment'].' > ';
+                                   
+                                }
+                                if(isset($_SESSION['categ'])){
+                                    if(empty($_SESSION['categ'])){
+                                        
+                                        $_SESSION['categ']=$_SESSION['aliment'];
+                                    }
+                                    echo $_SESSION['categ'].' > ';
+                                   
+                                }
+                                $_SESSION['famille'] = "";
+                                $_SESSION['aliment'] = "";
+                                $_SESSION['categ'] ="";
+                                ?>
             </div>
         </form>
        

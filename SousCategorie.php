@@ -23,21 +23,39 @@
         
        
         if(isset($_POST['aliment'])){
-            $choixPrecedent = $_POST['aliment'];
-            $_SESSION['aliment']= $choixPrecedent;
-            //echo $_SESSION['aliment'];
-            $famille = $bdd->query("SELECT famille FROM Aliment WHERE famille='$choixPrecedent';");
-            $result= $famille->fetch();
-            $count = $result['famille'];
-            if($count != 0){
-                $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
+           
+            if($_POST['aliment']==''){
+               
+                $choixPrecedent = $_SESSION['famille'];
+                $_SESSION['aliment']= $choixPrecedent;
+                //echo $_SESSION['aliment'];
+                $famille = $bdd->query("SELECT famille FROM Aliment WHERE famille='$choixPrecedent';");
+                $result= $famille->fetch();
+                $count = $result['famille'];
+                if($count != 0){
+                    $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
             }
+            }
+          
+            else{
+               
+                $choixPrecedent = $_POST['aliment'];
+                $_SESSION['aliment']= $choixPrecedent;
+                //echo $_SESSION['aliment'];
+                $famille = $bdd->query("SELECT famille FROM Aliment WHERE famille='$choixPrecedent';");
+                $result= $famille->fetch();
+                $count = $result['famille'];
+                if($count != 0){
+                    $aliment = $bdd->query("SELECT nomAliment FROM Aliment WHERE famille='$choixPrecedent' AND categorie LIKE 'sous-categorie';");
+            }
+            
+        }
+            
            
            
         
            
         }
-        
        
         if(($famille === false) || ($aliment === false) ){
             die("Erreur");
@@ -64,7 +82,7 @@
      <h2 id="fami"> SOUS ALIMENT </h2>
             <form method="POST" action="Famille.php">
                 <select name="categ" id="categ" onchange= "recupIdSelect(this);">
-                <option value="rien" ?><?php echo ""; ?></option>
+                <option value="" ?><?php echo ""; ?></option>
                     <?php 
                         while($rowa = $aliment->fetch(PDO::FETCH_ASSOC)){ 
                     ?>

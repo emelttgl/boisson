@@ -29,7 +29,7 @@
             $dbco->exec($sql);
                     
             echo 'Base de données créée bien créée !';
-            header('Location: principale.php');
+            header('Location: Accueil.php');
             }
                 
             catch(PDOException $e){

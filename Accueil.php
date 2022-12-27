@@ -56,7 +56,7 @@
               $result= $recupId->fetch();
               $count = $result['prenom'];
             
-              echo "</br> Bonjour $count, vous êtes connecté !<br/>";
+              echo "<h1 id='bienvenue'> Bonjour $count, vous êtes connecté !</h1>";
               
             }
           }
