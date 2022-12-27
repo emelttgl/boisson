@@ -157,7 +157,7 @@ nav ul li:hover ul li {
 .NomCocktail{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 250px;  
+  grid-auto-rows: 300px;  
   text-align: center;
   padding: 50px;
   
@@ -209,7 +209,7 @@ nav ul li:hover ul li {
   width: 80px;
 }
 #mojito{
-  width: 120px;
+  width: 150px;
 }
 #pinacolada{
   width: 60px;
@@ -230,7 +230,7 @@ nav ul li:hover ul li {
   width: 80px;
 }
 #tipunch{
-  width: 130px;
+  width: 170px;
 }
 #favoris{
   width: 30px;

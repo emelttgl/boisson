@@ -83,7 +83,7 @@ catch(Exception $e){
         
         <?php echo htmlspecialchars($rowf['NomCocktail']); ?>
         <?php if(strtolower($rowf['NomCocktail'])=="black velvet"){
-            echo '<img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
+            echo '</br><img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
            
         }
            else if(strtolower($rowf['NomCocktail'])=="bloody mary"){
