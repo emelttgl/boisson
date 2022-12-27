@@ -42,7 +42,7 @@ catch(Exception $e){
                 </ul>
         </nav>
         <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
-        
+        <a id="pref"> Voici tes recettes préférées : </a>
         <div class="NomCocktail">
        
         <?php 

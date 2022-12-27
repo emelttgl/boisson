@@ -157,8 +157,7 @@ nav ul li:hover ul li {
 .NomCocktail{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 250px;
-  border-style: solid;
+  grid-auto-rows: 250px;  
   text-align: center;
   padding: 50px;
   
@@ -325,4 +324,9 @@ nav ul li:hover ul li {
   display: block;
   text-align: center;
   
+}
+#pref{
+  margin:50px;
+  padding: 30px;
+  font-size: 20px;
 }

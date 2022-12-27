@@ -63,10 +63,11 @@ catch(Exception $e){
                 <li><input type="search" name="g" placeholder="Rechercher" id="search"> <input type="submit" href="Recherche.php" value="Rechercher"> </li>
                 </ul>
         </nav>
-        <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
         
+        <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
+        <h2 id="fami"> Les Recettes </h2>
         <div class="NomCocktail">
-       
+        
         <?php 
         if(!isset($_SESSION['id'])){
             echo"UNE INSCRIPTION EST NECESSAIRE!!!";
