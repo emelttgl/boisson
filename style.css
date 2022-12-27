@@ -37,7 +37,7 @@ margin-bottom: 40px;
   color: palevioletred;
  
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"],input[type="date"]{
   border-radius: 5px;
   padding: 10px;
   width: 30%;
@@ -45,6 +45,11 @@ input[type="text"], input[type="password"]{
   background-color: lightgray;
   margin-left: 200px;
   margin: 20px;
+}
+input[type="radio"]{
+  margin-left: 50px;
+  margin-bottom: 30px;
+  
 }
 #valider{
   width: 100px;

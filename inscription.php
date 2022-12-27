@@ -29,10 +29,11 @@
         <input type="text" placeholder="Prénom" name="prenom">
         <br>
         <label>Sexe</label>
-        <input type="text" placeholder="Sexe" name="sexe">
+        <input type="radio" name="sexe" value="f"/> Femme	
+        <input type="radio" name="sexe" value="h"/> Homme
         <br>
         <label>Date de naissance</label>
-        <input type="text" placeholder="Date de naissance" name="date_naiss">
+        <input type="date" name="date_naiss" /><br />
         <br>
         <label>Adresse</label>
         <input type="text" placeholder="Adresse" name="adresse">
