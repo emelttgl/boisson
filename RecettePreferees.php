@@ -50,7 +50,8 @@ catch(Exception $e){
             echo"UNE INSCRIPTION EST NECESSAIRE!!!";
             ?><a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a> <?php 
         }
-                            
+    
+        if(!empty($NomCocktail)){   
             while($rowf = $NomCocktail->fetch(PDO::FETCH_ASSOC) ){
                
                 
@@ -124,7 +125,7 @@ catch(Exception $e){
      </div>
         
         <?php
-            }
+            }}
         
 
         ?>
