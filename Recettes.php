@@ -69,9 +69,9 @@ catch(Exception $e){
         <div class="NomCocktail">
         
         <?php 
-        if(!isset($_SESSION['id'])){
+        if(empty($_SESSION['id'])){
             echo"UNE INSCRIPTION EST NECESSAIRE!!!";
-            ?><a id="inscription" href="Inscription.php"><button>INSCRIPTION</button></a> <?php 
+            ?><a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a> <?php 
         }
                             
             while($rowf = $NomCocktail->fetch(PDO::FETCH_ASSOC) ){

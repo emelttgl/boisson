@@ -44,21 +44,26 @@
           $db_host = 'localhost';
           $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
           
-          if(isset($_SESSION['id'])){
+          if(!empty($_SESSION['id'])){
             $id = $_SESSION['id'];
             // verifier si utilisateur est non vide
-            $verif = $bdd->query("SELECT COUNT(*) as Nb FROM UTILISATEUR ;");
+            $verif = $bdd->query("SELECT COUNT(*) as Nb FROM Utilisateur ;");
             $result= $verif->fetch();
             $count = $result['Nb'];
             if($count != 0){
 
-              $recupId = $bdd->query("SELECT prenom FROM UTILISATEUR WHERE id='$id' ;");
+              $recupId = $bdd->query("SELECT prenom FROM Utilisateur WHERE id='$id' ;");
               $result= $recupId->fetch();
               $count = $result['prenom'];
             
               echo "<h1 id='bienvenue'> Bonjour $count, vous êtes connecté !</h1>";
               
             }
+            
+          }
+          else{
+            echo "<h1 id='bienvenue'> Bonjour veuillez-vous connecté !</h1>";
+            $_SESSION['id']='';
           }
           $req = $bdd->query("SELECT count(*) as Nb FROM Recettes;");
           $result= $req->fetch();

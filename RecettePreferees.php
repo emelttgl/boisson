@@ -5,14 +5,14 @@ $db_username = 'root';
 $db_password = 'root';
 $db_name = 'boisson';
 $db_host = 'localhost';
-if(isset($_SESSION['id'])){
-try{
-
-    $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
-    $NomCocktail = $bdd->query("SELECT distinct(nomCocktail) FROM Panier ;");
-
+if(isset($_SESSION['id'])&& !empty($_SESSION['id'])){
+    try{
+        $id =$_SESSION['id'];
+        $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
+        $NomCocktail = $bdd->query("SELECT distinct(nomCocktail) FROM Panier WHERE idUsers = '$id' ;");
     
-}
+        
+    }
 catch(Exception $e){
             
     die($e->getMessage());
@@ -46,9 +46,10 @@ catch(Exception $e){
         <div class="NomCocktail">
        
         <?php 
-        if(!isset($_SESSION['id'])){
+        if(empty($_SESSION['id'])){
             echo"UNE INSCRIPTION EST NECESSAIRE!!!";
-            ?><a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a> <?php 
+            ?>
+            <a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a><?php 
         }
     
         if(!empty($NomCocktail)){   
