@@ -38,7 +38,7 @@ catch(Exception $e){
                 <li><a href="Famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><form method="" action="Recherche.php"><input type="search" name="g" placeholder="Rechercher" id="search"> <input type="submit" href="Recherche.php" value="Rechercher"></form> </li>
+                <li><a href="Rechercher.php">RECHERCHER</a></li>
                 <li><a href="MonCompte.php"> MON COMPTE</a><img src="image/icon.png" alt="Logo_page" title="Accueil" id="icon1" /></li>
               </ul>
         </nav>
@@ -63,7 +63,7 @@ catch(Exception $e){
         
         <?php echo htmlspecialchars($rowf['nomCocktail']); ?>
         <?php if(strtolower($rowf['nomCocktail'])=="black velvet"){
-            echo '<img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
+            echo '</br><img id="blackvelvet" src="Photos/Black_velvet.jpg" border="0" />';
            
         }
            else if(strtolower($rowf['nomCocktail'])=="bloody mary"){
