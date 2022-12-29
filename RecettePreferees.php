@@ -39,7 +39,8 @@ catch(Exception $e){
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><form method="" action="Recherche.php"><input type="search" name="g" placeholder="Rechercher" id="search"> <input type="submit" href="Recherche.php" value="Rechercher"></form> </li>
-                </ul>
+                <li><a href="MonCompte.php"> MON COMPTE</a><img src="image/icon.png" alt="Logo_page" title="Accueil" id="icon1" /></li>
+              </ul>
         </nav>
         <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
         <a id="pref"> Voici tes recettes préférées : </a>
@@ -49,7 +50,7 @@ catch(Exception $e){
         if(empty($_SESSION['id'])){
             echo"UNE INSCRIPTION EST NECESSAIRE!!!";
             ?>
-            <a id="inscription" href="inscription.php"><button>INSCRIPTION</button></a><?php 
+            <a id="inscription" href="inscription.php"><button>S'inscrire</button></a><?php 
         }
     
         if(!empty($NomCocktail)){   

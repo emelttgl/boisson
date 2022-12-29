@@ -253,6 +253,10 @@ nav ul li:hover ul li {
 }
 #inscription{
   display: block;
+  text-align: left;
+}
+#clikk{
+  display: block;
   text-align: center;
 }
 
@@ -329,4 +333,12 @@ nav ul li:hover ul li {
   margin:50px;
   padding: 30px;
   font-size: 20px;
+}
+#icon1{
+  width:30px;
+}
+#pascompte{
+  font-size: 30px;
+  display: block;
+  text-align: center;
 }

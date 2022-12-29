@@ -21,13 +21,9 @@
               </ul>
         </nav>
     
-      <h1 id="bienvenue">BIENVENUE CHEZ WEDRINK !!!<img src="image/logo.png" alt="Logo_page" title="Accueil" id="logo2"/></h1>
-      <!-- Bouton -->
-      <!--<a id="creerdb" href="install.php" > <button  name ="db">Créer la database</button></a>
-      
-      <a id="connexion" href="Connexion.php"><button>Connexion</button></a>
      
-      <a id="inscription" href="Inscription.php"><button>Inscription</button></a>-->
+     
+      
      
       <?php
           include "Donnees.inc.php";
@@ -63,22 +59,20 @@
             
           }
           else{
-            echo "<h1 id='bienvenue'> Veuillez-vous connecté !</h1>";
+            echo "<h1 id='bienvenue'> Bonjour veuillez-vous connecté !</h1>";
             $_SESSION['id']='';
           }
           $req = $bdd->query("SELECT count(*) as Nb FROM Recettes;");
           $result= $req->fetch();
           $count = $result['Nb'];
 ?>
-<a href="MonCompte.php" id="clikk"><button>Cliquez ici</button></a>
-<p>Navigation WeDrink: </p></br>
-<p>--> Identification utilisateur </p></br>
-<p>--> Accès hiérarchique aux recettes à partir de la hiérarchie des aliments</p></br>
-<p>--> Mes recettes préférés (=panier)</p></br>
-<p>--> Recetes de boissons</p>
+ <!-- Bouton -->
+ <a id="connexion" href="Connexion.php"><button>Se connecter</button></a>
+ <a id="creerdb" href="install.php" > <button  name ="db">Déconnexion</button></a>
+      
+     
+          <p id="pascompte">Vous n'avez pas de compte ?<a id="clikk" href="Inscription.php"><button>S'inscrire</button></a></p>
 <?php
-          
-
           //AJOUT DES DONNEES DE LA TABLE RECETTES DANS RECETTES
           if($count == 0){
             for ($i=0; $i <count($Recettes) ; $i++) {
