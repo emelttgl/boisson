@@ -49,26 +49,13 @@
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher">  </li>
+                <li><form method="" action="Recherche.php"><input type="search" name="g" placeholder="Rechercher" id="search1"><input type="submit" href="Recherche.php" value="Rechercher"></form>  </li>
                 </ul>
         </nav>
-        <section class="affichercocktail">
-            <?php
-                if($ingredient->rowCount()>0){
-                    
-                }else{
-                    echo 'recherche non trouvé';
-                }
-            ?>
-</section>   
+       
     <section>
-        <h2> FAMILLE </h2>
-        <form method="POST" action="Aliment.php">
-            <select name="famille" id ="famille"  onchange= "recupIdSelect(this);">
-            
-            </select> 
-            <input type="submit" value="Valider" />
-        </form> 
+        <h2> 0 résultats trouvés.. </h2>
+        
     </section>
          <!--<script>
         function recupIdSelect(elt){

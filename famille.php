@@ -12,7 +12,7 @@
                 <li><a href="famille.php">FAMILLE</a></li>
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
-                <li><input type="search" name="g" placeholder="Rechercher" id="search"> <input type="submit" href="Recherche.php" value="Rechercher"> </li>
+                <li><form method="" action="Recherche.php"><input type="search" name="g" placeholder="Rechercher" id="search"> <input type="submit" href="Recherche.php" value="Rechercher"></form> </li>
                 </ul>
         </nav>
         <h2 id="fami"> FAMILLE </h2>
