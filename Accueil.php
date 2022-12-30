@@ -75,7 +75,7 @@
 <p>--> Identification utilisateur </p></br>
 <p>--> Accès hiérarchique aux recettes à partir de la hiérarchie des aliments</p></br>
 <p>--> Mes recettes préférés (=panier)</p></br>
-<p>--> Recetes de boissons</p>
+<p>--> Recettes de boissons</p>
 <?php
           
 

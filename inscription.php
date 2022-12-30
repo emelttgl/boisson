@@ -66,15 +66,20 @@
                 
                 try
                 {
-                  
+
                   $nom=$_POST['nom']; 
                   $prenom=$_POST['prenom']; 
                   $mail=$_POST['mail']; 
                   $motDePasse=$_POST['motDePasse']; 
+                  $sexe=$_POST['sexe']; 
+                  $date_naiss=$_POST['date_naiss']; 
+                  $adresse=$_POST['adresse']; 
+                  $code_postal=$_POST['code_postal']; 
+                  $ville=$_POST['ville']; 
+                  $num=$_POST['num']; 
                   $bdd = new PDO('mysql:host=localhost;dbname=boisson;charset=utf8', 'root', 'root');
                   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                  $req = $bdd->query("INSERT INTO `Utilisateur`(`nom`, `prenom`, `mail`, `motDePasse`) VALUES ('$nom', '$prenom', '$mail', '$motDePasse');");
+                  $req = $bdd->query("INSERT INTO Utilisateur(nom, prenom, sexe, date_naiss, adresse, code_postal, ville, num, mail, motDePasse) VALUES ( '$nom', '$prenom', '$sexe', '$date_naiss', '$adresse', '$code_postal', '$ville', '$num', '$mail', '$motDePasse');");
                   $recupId = $bdd->query("SELECT id FROM UTILISATEUR WHERE nom = '$nom' and motDePasse = '$motDePasse' ;");
                   $result= $recupId->fetch();
                   $count = $result['id'];

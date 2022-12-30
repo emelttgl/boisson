@@ -13,7 +13,7 @@ try{
     $idCocktail2 = $bdd->query("SELECT distinct(idRecette) FROM Recettes ;");
     $NomCocktail2 = $bdd->query("SELECT distinct(NomCocktail) FROM Recettes ;");
   
-  
+   
     if(($NomCocktail === false) && ($idCocktail === false)){
         die("Erreur");
     }
@@ -26,11 +26,17 @@ try{
            // echo 'ici';
             $id=$_SESSION['id'];
             //echo  $val;
-            $Nom= $bdd->query("SELECT NomCocktail FROM Recettes Where idRecette = '$val' ;");
+            $Nom= $bdd->query("SELECT nomCocktail FROM Recettes Where idRecette = '$val' ;");
             $result= $Nom->fetch(PDO::FETCH_ASSOC);
-            $cocktail =htmlspecialchars($result['NomCocktail']);
+            $cocktail =htmlspecialchars($result['nomCocktail']);
             //echo $cocktail;
-            $req = $bdd->query("INSERT INTO `Panier`(idUsers, nomCocktail) VALUES ('$id', '$cocktail');");
+            $doublon = $bdd->query("SELECT  COUNT(*) as Nb FROM PANIER WHERE nomCocktail LIKE '$cocktail'  ;");
+            $result= $doublon->fetch();
+            $count = $result['Nb'];
+            if($count == 0){
+                $req = $bdd->query("INSERT INTO `Panier`(idUsers, nomCocktail) VALUES ('$id', '$cocktail');");
+            }
+           
         }
 
     }
@@ -39,6 +45,7 @@ catch(Exception $e){
             
     die($e->getMessage());
 }
+
 
             
    
@@ -61,7 +68,7 @@ catch(Exception $e){
                 <li><a href="Recettes.php">RECETTES</a></li>
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><a href="Recherche.php">RECHERCHER</a></li>
-                <li><a href="MonCompte.php"> MON COMPTE</a><img src="image/icon.png" alt="Logo_page" title="Accueil" id="icon1" /></li>
+                <li><a href="MonCompte.php"> MON COMPTE</a><img src="image/icon.png" alt="logo_page" title="Accueil" id="icon1" /></li>
               </ul>
         </nav>
         

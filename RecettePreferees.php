@@ -10,8 +10,30 @@ if(isset($_SESSION['id'])&& !empty($_SESSION['id'])){
         $id =$_SESSION['id'];
         $bdd = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_username, $db_password);
         $NomCocktail = $bdd->query("SELECT distinct(nomCocktail) FROM Panier WHERE idUsers = '$id' ;");
+        $idCocktail = $bdd->query("SELECT distinct(idRecette) FROM Recettes ;");
+        $idCocktail2 = $bdd->query("SELECT distinct(idRecette) FROM Recettes ;");
+        while($rowa = $idCocktail2->fetch(PDO::FETCH_ASSOC)){
+             $val = htmlspecialchars($rowa['idRecette']); 
+            
+            if(isset($_POST[$val]) && isset($_SESSION['id'])){
+                //echo htmlspecialchars($rowf['NomCocktail']);
+                
+                $Nom= $bdd->query("SELECT NomCocktail FROM Panier LIMIT $val;");
+                $result= $Nom->fetch();
+                while(!empty($result)){
+                    $cocktail =htmlspecialchars($result['NomCocktail']);
+                    $result= $Nom->fetch();
+                   
+                }
+                echo $cocktail;
+                
+                if(!empty($cocktail)){
+                echo "</br>";
+                $req = $bdd->query("DELETE FROM `Panier` Where nomCocktail LIKE '$cocktail';");
+                header('Location: RecettePreferees.php');
+            }}
     
-        
+        }
     }
 catch(Exception $e){
             
@@ -40,9 +62,9 @@ catch(Exception $e){
                 <li><a href="RecettePreferees.php">MES RECETTES PRÉFÉRÉES</a></li>
                 <li><a href="Recherche.php">RECHERCHER</a></li>
                 <li><a href="MonCompte.php"> MON COMPTE</a><img src="image/icon.png" alt="Logo_page" title="Accueil" id="icon1" /></li>
-              </ul>
+                </ul>
         </nav>
-        <form method="POST"  name="ajouter" id ="ajouter"action="Recettes.php">
+        <form method="POST"  name="supprimer" id ="supprimer"action="">
         <a id="pref"> Voici tes recettes préférées : </a>
         <div class="NomCocktail">
        
@@ -55,7 +77,7 @@ catch(Exception $e){
     
         if(!empty($NomCocktail)){   
             while($rowf = $NomCocktail->fetch(PDO::FETCH_ASSOC) ){
-               
+                $rowi = $idCocktail->fetch(PDO::FETCH_ASSOC)
                 
          ?>
         
@@ -119,18 +141,24 @@ catch(Exception $e){
         }else{
             echo '</br><img id="logo3" src="image/logo.png" border="0" /> ';
         }
-
-       
+        $val = htmlspecialchars($rowi['idRecette']); 
+       //echo $val;
     ?>  
-            
-       
-     </div>
-        
-        <?php
-            }}
-        
+             </br>
+            <button type=submit name="<?php echo $val; ?>"title ="Supprimer" >    
+            <img id="favoris" src="image/poubelle.jpg" />
+            </button>
+    
+                                      
+    </br>
+   
+    </div>
+    
+    <?php
+        }}
+    
 
-        ?>
+    ?>
     
        </div>
        

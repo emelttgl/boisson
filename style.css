@@ -135,8 +135,11 @@ nav ul li:hover ul li {
 
 }
 #search1{
-  width:150px;
-  margin-top:38px;
+  display: block;
+  text-align: center;
+  margin:50px;
+  
+  
 }
 
 #logo{
@@ -243,8 +246,8 @@ nav ul li:hover ul li {
 #creerdb{
   display: block;
   text-align: center;
-  block-size: 80px;
-  border-radius: 9px;
+  margin:20px;
+ 
 }
 
 #connexion{
@@ -341,4 +344,9 @@ nav ul li:hover ul li {
   font-size: 30px;
   display: block;
   text-align: center;
+}
+#rech{
+  background-color: white;
+  color: pink;
+  font-size: 20px;
 }

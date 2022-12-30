@@ -64,9 +64,11 @@
           $count = $result['Nb'];
 ?>
  <!-- Bouton -->
+ <a id="creerdb" href="install.php" > <button  name ="db">Installation</button></a>
  <a id="connexion" href="Connexion.php"><button>Se connecter</button></a>
- <a id="creerdb" href="install.php" > <button  name ="db">Déconnexion</button></a>
-      
+ <a id="connexion" href="ModifierID.php" > <button >Modifier mon compte</button></a>
+ <a id="connexion" href="Deconnexion.php" > <button  name ="db">Déconnexion</button></a>
+ 
      
           <p id="pascompte">Vous n'avez pas de compte ?<a id="clikk" href="Inscription.php"><button>S'inscrire</button></a></p>
 <?php
